@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "python_process",
+      "type": "pickString",
+      "description": "Select the process to debug",
+      "options": [
+        "POC/convert_images.py",
+        "POC/runner.py"
+      ],
+    },
+    {
+      "id": "args",
+      "description": "Arguments to pass to the process",
+      "type": "promptString"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Python: Process",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${input:python_process}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": "${input:args}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+  ]
+}
