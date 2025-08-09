@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     gst_init(&argc, &argv);
 
     // 构建pipeline
-    std::string pipeline_desc = "filesrc location=mono_color.mp4 ! decodebin ! videoconvert ! video/x-raw,format=RGB ! appsink name=sink";
+    std::string pipeline_desc = "filesrc location=mono_color.mp4 ! appsink name=sink";
     
     std::cout << "1" << std::endl;
 
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
         if (gst_buffer_map(buffer, &map, GST_MAP_READ)) {
             // 这里 map.data 指向一帧的RGB数据，长度为 map.size
             // 你可以在这里处理每一帧
-            std::cout << "Got frame: " << width << "x" << height << ", data size: " << map.size << std::endl;
+            std::cout << "Got frame: " << width << " x " << height << ", data size: " << map.size << std::endl;
 
             gst_buffer_unmap(buffer, &map);
         }
