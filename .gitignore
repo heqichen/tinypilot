@@ -2,3 +2,11 @@
 __pycache__
 .ipynb_checkpoints
 
+#### BAZEL ####
+MODULE.bazel
+MODULE.bazel.lock
+bazel-bin
+bazel-out
+bazel-testlogs
+bazel-tinypilot
+
