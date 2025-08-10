@@ -5,6 +5,6 @@ test:
 	$(MAKE) -C perception/vision/ml
 clean:
 	$(MAKE) -C sensor/vision/test clean
-	$(MAKE) -C sensor/vision/test clean
+	$(MAKE) -C perception/vision/ml clean
 
 .PHONY: clean
