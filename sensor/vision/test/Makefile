@@ -1,19 +1,19 @@
 
 LD = g++
 CPP = g++
-CFLAGS += -g $(shell pkg-config --cflags gstreamer-1.0 gstreamer-app-1.0)
-LDFLAGS += $(shell pkg-config --libs gstreamer-1.0 gstreamer-app-1.0)
+CFLAGS += -g $(shell pkg-config --cflags opencv4)
+LDFLAGS += $(shell pkg-config --libs opencv4)
 
-all: gst_test
-	./gst_test
+all: video_file_loader
+	./video_file_loader
 
-gst_test: gst_test.o
+video_file_loader: video_file_loader.o
 	$(LD) -o $@ $< $(LDFLAGS) $(LIBS)
 
-gst_test.o: gst_test.cpp
+video_file_loader.o: video_file_loader.cpp
 	$(CPP) -c $< $(CFLAGS) -o $@
 
 clean:
-	$(RM) gst_test gst_test.o
+	$(RM) video_file_loader video_file_loader.o
 
 .PHONY: clean all
