@@ -4,5 +4,3 @@ System Packages:
 libopencv-dev // for test, loading video file
 
 Utilities:
-Bazel
-> Download bazelisk, ln -s bazelisk bazel
