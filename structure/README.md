@@ -4,7 +4,7 @@ run make command to generate everything
 
 > make
 
-# mainboard
+# Shell for RK3588
 
 ![Main board](everything.svg)
 
