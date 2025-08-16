@@ -1,20 +1,4 @@
-$fn=40;
-epsilon = 0.3;
-
-
-pcb_width = 89; // x-Axis
-pcb_depth = 57; // y-Axis
-pcb_height = 1.7; // z-Axis
-
-module round_cube(length, width, height, dimeter) {
-    r = dimeter / 2.0;
-    hull() {
-        translate([r, r, 0]) cylinder(height, r, r);
-        translate([length-r, r, 0]) cylinder(height, r, r);
-        translate([r, width-r, 0]) cylinder(height, r, r);
-        translate([length-r, width-r, 0]) cylinder(height, r, r);
-    }
-}
+include <common.scad>
 
 module pcb_board() {
     color([0, 1, 0])
@@ -29,39 +13,55 @@ module mock_cpu() {
     xlen2 = 17.8;
     ylen2 = 17.8;
     height2 = 1.6;
-    translate([47.87, 25.95, pcb_height])
+    translate([cpu_pos_x, cpu_pos_y, pcb_height])
     union() {
         translate([0, 0, height/2]) cube([xlen, ylen, height], true);
         translate([0, 0, height2/2]) cube([xlen2, ylen2, height2], true);
+        
+        // Heat sink
+        color([0, 0, 0])
+        translate([0, 0, 10/2 + height2]) cube([20, 20, 10], true);
     }
+    
 }
 
 module mounting_holes() {
+    for (x = pcbMountingXPos) {
+        for (y = pcbMountingYPos) {
+            translate([x, y, 0]) cylinder(10, 3/2, 3/2, true);
+        }
+    }
+    
+    /*
     translate([23.5, 53.5, 0]) cylinder(10, 3/2, 3/2, true);
     translate([23.5, 4.5, 0]) cylinder(10, 3/2, 3/2, true);
     translate([81.5, 4.5, 0]) cylinder(10, 3/2, 3/2, true);
     translate([81.5, 53.5, 0]) cylinder(10, 3/2, 3/2, true);
+    */
 }
 
 module usb2() {
+    length = 17.5 + 2;
     width = 14; // epsilon included
-    height = 14.5+epsilon*2;
+    height = 16+epsilon*2;
     color([1, 1, 1])
-    translate([-5, 10-width/2, pcb_height-epsilon]) cube([17.5, width, height]);
+    translate([-2.5-epsilon-1, 10-width/2, pcb_height-epsilon]) cube([length, width, height]);
 }
 
 module usb3() {
+    length = 17.5 + 2;
     width = 14;  // epsilon included
-    height = 14.5+epsilon*2;
+    height = 16 +epsilon*2;
     color([0, 0, 1])
-    translate([-5, 27.87-width/2, pcb_height-epsilon]) cube([17.5, width, height]);
+    translate([-2.5-epsilon-1, 27.87-width/2, pcb_height-epsilon]) cube([length, width, height]);
 }
 
 module ethernet() {
     width = 17;
-    height = 13.5+epsilon*2;
+    length = 22 + 2;
+    height = 14+epsilon*2;
     color([0.5, 0.5, 1])
-    translate([-5, 46.86-width/2, pcb_height-epsilon]) cube([21, width, height]);
+    translate([-2.5-epsilon-1, 46.86-width/2, pcb_height-epsilon]) cube([length, width, height]);
 }
 
 module usbc() {
@@ -83,13 +83,23 @@ module hdmi_out() {
 }
 
 
-module audio() {
+module audio_jeck() {
     dimeter = 5 + epsilon*2;
     height = 2.5; // No epsilon needed
     ylen = 15;
     translate([56.62, pcb_depth-ylen/2+5, dimeter/2+pcb_height])
     rotate([90, 0, 0])
     cylinder(ylen, dimeter/2, dimeter/2, true);
+}
+
+module audio_body() {
+    translate([56.62-7/2, pcb_depth-15, pcb_height])
+    cube([7, 15, 6]);
+}
+
+module audio() {
+    audio_jeck();
+    audio_body();
 }
 
 module hdmi_in() {
@@ -100,9 +110,26 @@ module hdmi_in() {
     translate([70.60-xlen/2, pcb_depth-ylen+5, pcb_height])cube([xlen, ylen, height]);
 }
 
+module mic() {
+    mic_diameter = 4.5+epsilon*2;
+    color([1, 1, 1])
+    translate([pcb_width+epsilon - mic_diameter/2, pcb_depth+epsilon-mic_diameter/2, pcb_height])
+    cylinder(3, mic_diameter/2, mic_diameter/2);
+}
+
+module fan_port() {
+    color([0.1, 0.1, 0.1])
+    translate([pcb_width+epsilon-3, 0, pcb_height]) cube([3, 6, 9]);
+    
+    xlen = 4.5 + epsilon*2;
+    ylen = 7.5 + epsilon*2;
+    h = 5.5 + epsilon;
+    color([1, 1, 1])
+    translate([pcb_width+epsilon-xlen, 11 - ylen/2, pcb_height]) cube([xlen, ylen, h]);
+}
 
 module power_button() {
-    dimeter = 2.2 + epsilon*2;
+    dimeter = 2.5 + epsilon*2;
     height = 4.6/2; // No epsilon needed
     ylen = 15;
     color([0.9, 0.6, 0.2])
@@ -115,12 +142,14 @@ module power_button() {
 // Buttom
 
 module tf_card() {
-    ylen = 11 + epsilon*2;
+    ylen = tf_card_width + epsilon*2;
     xlen = 15;
     height = 2.5 +epsilon*2;
     
-    translate([pcb_width-xlen+5, 14.42-ylen/2, -height+epsilon])cube([xlen, ylen, height]);
+    translate([pcb_width-xlen+5, tf_card_pos_y-ylen/2, -height+epsilon])cube([xlen, ylen, height]);
 }
+
+
 
 module nvme_storage() {
     
@@ -128,39 +157,97 @@ module nvme_storage() {
     ylen = 22 + epsilon*2;
     height = 5+epsilon*2;
     
-    translate([3.46-epsilon, 32.65-ylen/2, -height+epsilon])cube([xlen, ylen, height]);
-}
-
-module gpio() {
-}
-
-module antenna() {
-}
-
-module camera() {
+    translate([3.46-epsilon, nvme_cetner_y-ylen/2, -height+epsilon])cube([xlen, ylen, height]);
 }
 
 
 
-difference() {
-    union() {
-        pcb_board();
-        mock_cpu();
-        usb2();
-        usb3();
-        ethernet();
-        usbc();
-        hdmi_out();
-        audio();
-        hdmi_in();
-        power_button();
-        // bottom
-        tf_card();
-        nvme_storage();
-        
-        gpio();
-        antenna();
-        camera();
+module mock_mainboard() {
+    difference() {
+        union() {
+            // top
+            pcb_board();
+            mock_cpu();
+            usb2();
+            usb3();
+            ethernet();
+            usbc();
+            hdmi_out();
+            audio();
+            hdmi_in();
+            power_button();
+            mic();
+            fan_port();
+            
+            // bottom
+            tf_card();
+            nvme_storage();
+            
+            
+            // gpio();
+            // antenna();
+            // camera();
+        }
+        mounting_holes();
     }
-    mounting_holes();
 }
+
+// mock_mainboard();
+
+
+module fix_audio(top=true) {
+    hull() {
+        if (top) {
+            translate([0, 0, -20]) audio_jeck();
+        } else {
+            translate([0, 0, 20]) audio_jeck();
+        }
+        audio_jeck();
+    }
+    
+    hull() {
+        if (top) {
+            translate([0, 0, -20]) audio_body();
+        } else {
+            translate([0, 0, 20]) audio_body();
+        }
+        audio_body();
+    }
+}
+
+
+module fix_tf_card(top = true) {
+    hull() {
+        if (top) {
+            translate([0, 0, -20]) tf_card();
+        } else {
+            translate([0, 0, 20]) tf_card();
+        }
+        tf_card();
+    }
+}
+
+module fix_power_button(top = true) {
+    hull() {
+        if (top) {
+            translate([0, 0, -20]) power_button();
+        } else {
+            translate([0, 0, 20]) power_button();
+        }
+        power_button();
+    }
+}
+
+module fix_pcb_board(top = true) {
+    hull() {
+        if (top) {
+            translate([0, 0, -20]) pcb_board();
+        } else {
+            translate([0, 0, 20]) pcb_board();
+        }
+        pcb_board();
+    }
+}
+
+
+// mock_mainboard();
