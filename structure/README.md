@@ -6,5 +6,5 @@ run make command to generate everything
 
 # mainboard
 
-![Main board](mainboard.svg)
+![Main board](everything.svg)
 

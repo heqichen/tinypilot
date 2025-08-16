@@ -4,3 +4,4 @@ System Packages:
 libopencv-dev // for test, loading video file
 
 Utilities:
+openscad // for generating 3D print model
