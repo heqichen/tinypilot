@@ -1,6 +1,8 @@
+#define CL_TARGET_OPENCL_VERSION 300
 #include <CL/cl.h>
 #include <iostream>
 #include <vector>
+
 
 const char* kernelSource = R"(
 __kernel void add_one(__global int* data) {

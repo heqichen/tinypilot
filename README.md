@@ -3,6 +3,7 @@ System Packages:
 // libgstreamer-plugins-base1.0-dev
 libopencv-dev // for test, loading video file
 clinfo // check OpenCl status
+clang clang-15 llvm-spirv
 For test
 intel-opencl-icd // For the cpu runtime for OpenCL , only for testing
 
