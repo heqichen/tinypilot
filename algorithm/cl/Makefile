@@ -8,5 +8,5 @@ LDFLAGS = -L /usr/lib/gcc/x86_64-linux-gnu/11/ -lOpenCL
 mm_layout: mm_layout.o
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
-mm_layout.o: mm_layout.cpp
+mm_layout.o: mm_layout.cpp mm_layout.cl
 	$(CXX) $(CXXFLAGS) -c $< -o $@
