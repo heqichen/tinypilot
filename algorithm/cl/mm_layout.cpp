@@ -1,11 +1,15 @@
-#define CL_TARGET_OPENCL_VERSION 300
-#include <CL/cl.h>
+#include "mm_layout.h"
 #include <cassert>
 #include <cstdio>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
+
+namespace cooboc {
+namespace algorithm {
+namespace cl {
+
 
 #define CL_CHECK(_expr)                \
     do {                               \
@@ -28,11 +32,10 @@ std::string readFile(const std::string &filepath) {
     return buffer.str();
 }
 
-constexpr std::size_t testSize {40960};
 
 // https://github.com/KhronosGroup/OpenCL-TTL/blob/464e2e14e8e1bc59b74bf922ab6f3dc7c5518d25/opencl/samples/cpp/TTL_sample_runner.cpp#L152
 
-int main(int argc, char *argv[], char *envs[]) {
+void reorderImageLayout(const std::uint8_t *src, std::uint8_t *dst, int width, int height) {
     cl_platform_id platform {};
     cl_device_id device {};
 
@@ -94,6 +97,13 @@ int main(int argc, char *argv[], char *envs[]) {
     clReleaseProgram(program);
     clReleaseCommandQueue(queue);
     clReleaseContext(context);
+}
 
+}    // namespace cl
+}    // namespace algorithm
+}    // namespace cooboc
+
+
+int main(int argc, char *argv[], char *envs[]) {
     return 0;
 }
