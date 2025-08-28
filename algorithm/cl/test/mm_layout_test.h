@@ -1,0 +1,4 @@
+#ifndef __ALGORITHM_CL_TEST_MM_LAYOUT_TEST_H__
+#define __ALGORITHM_CL_TEST_MM_LAYOUT_TEST_H__
+
+#endif

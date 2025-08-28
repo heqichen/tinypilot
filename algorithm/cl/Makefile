@@ -1,6 +1,8 @@
 include ../../common.mk
 
+
 LDFLAGS += -lOpenCL
+
 
 mm_layout: mm_layout.o
 	$(CXX) $^ -o $@ $(LDFLAGS)

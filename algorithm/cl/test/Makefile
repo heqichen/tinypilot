@@ -1,16 +1,21 @@
-CXX = g++
-CXXFLAGS = -std=c++11 -O2
-LDFLAGS = -lOpenCL
-TARGET = simple_cl_test 2
-SRC = simple_cl_test.cpp
+include ../../../common.mk
+
+CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
+LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
+
+TARGET = simple_cl_test mm_layout_test
 
 all: $(TARGET)
 
-cl_info: cl_info.cpp
-	clang++ cl_info.cpp -I /usr/include/c++/11/ -I /usr/include/x86_64-linux-gnu/c++/11/  -L /usr/lib/gcc/x86_64-linux-gnu/11/ -lOpenCL -o cl_info
+simple_cl_test: simple_cl_test.o
+mm_layout_test: mm_layout_test.o
 
-%: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+
+%: %.o
+	$(CXX) $^ $(LDFLAGS) -o $@ 
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) simple_cl_test.o mm_layout_test.o
