@@ -35,7 +35,7 @@ std::string readFile(const std::string &filepath) {
 
 // https://github.com/KhronosGroup/OpenCL-TTL/blob/464e2e14e8e1bc59b74bf922ab6f3dc7c5518d25/opencl/samples/cpp/TTL_sample_runner.cpp#L152
 
-void reorderImageLayout(const std::uint8_t *src, std::uint8_t *dst, int width, int height) {
+void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const std::size_t height, std::uint8_t *dst) {
     cl_platform_id platform {};
     cl_device_id device {};
 

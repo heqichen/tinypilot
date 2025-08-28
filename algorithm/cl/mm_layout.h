@@ -12,7 +12,7 @@ namespace cl {
 /**
  * from YUV image to SuperCombo
  */
-void reorderImageLayout(const std::uint8_t* src, std::uint8_t* dst, int width, int height);
+void reorderImageLayout(const std::uint8_t* src, const std::size_t width, const std::size_t height, std::uint8_t* dst);
 
 }    // namespace cl
 }    // namespace algorithm
