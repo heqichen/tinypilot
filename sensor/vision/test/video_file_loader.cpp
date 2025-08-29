@@ -1,5 +1,6 @@
-#include <opencv2/opencv.hpp>
 #include <iostream>
+#include <opencv2/opencv.hpp>
+#include "datadefs/vision/frame.h"
 
 int main(int argc, char** argv) {
     // Replace "output.mp4" with your video file path
@@ -14,16 +15,17 @@ int main(int argc, char** argv) {
     int frame_count = 0;
     cv::Mat frame;
     while (true) {
-        cap >> frame; // Read next frame
+        cap >> frame;    // Read next frame
         if (frame.empty()) {
-            break; // End of video
+            break;    // End of video
         }
         frame_count++;
-        std::cout << "Processing frame " << frame_count
-                  << " - size: " << frame.cols << "x" << frame.rows << std::endl;
+        std::cout << "Processing frame " << frame_count << " - size: " << frame.cols << "x" << frame.rows << std::endl;
         // 输出颜色空间信息
         int channels = frame.channels();
-        std::string color_space = (channels == 3) ? "BGR (3 channels)" : (channels == 1) ? "Grayscale (1 channel)" : "Unknown";
+        std::string color_space = (channels == 3)   ? "BGR (3 channels)"
+                                  : (channels == 1) ? "Grayscale (1 channel)"
+                                                    : "Unknown";
         std::cout << "Frame channels: " << channels << " -> Color space: " << color_space << std::endl;
 
         // Example: convert to RGB (process the frame)
@@ -36,7 +38,8 @@ int main(int argc, char** argv) {
         int row = 2, col = 4;
         if (rgb.rows > row && rgb.cols > col) {
             cv::Vec3b pixel = rgb.at<cv::Vec3b>(row, col);
-            std::cout << "Pixel at (3,5): R=" << (int)pixel[0] << ", G=" << (int)pixel[1] << ", B=" << (int)pixel[2] << std::endl;
+            std::cout << "Pixel at (3,5): R=" << (int)pixel[0] << ", G=" << (int)pixel[1] << ", B=" << (int)pixel[2]
+                      << std::endl;
         } else {
             std::cout << "Frame too small for pixel (3,5)" << std::endl;
         }
@@ -44,7 +47,8 @@ int main(int argc, char** argv) {
         // 将RGB矩阵转换为YUV_I420格式
         cv::Mat yuv;
         cv::cvtColor(rgb, yuv, cv::COLOR_RGB2YUV_I420);
-        std::cout << "After conversion to YUV_I420: size = " << yuv.cols << "x" << yuv.rows << ", channels = " << yuv.channels() << std::endl;
+        std::cout << "After conversion to YUV_I420: size = " << yuv.cols << "x" << yuv.rows
+                  << ", channels = " << yuv.channels() << std::endl;
 
         // // 输出YUV_I420矩阵第一行的所有像素数据（Y分量）
         // if (yuv.rows > 0) {
@@ -57,25 +61,25 @@ int main(int argc, char** argv) {
         // } else {
         //     std::cout << "YUV frame too small for first row" << std::endl;
         // }
-/*
-YUV_I420（也叫 YUV420p）矩阵的内存排布如下：
+        /*
+        YUV_I420（也叫 YUV420p）矩阵的内存排布如下：
 
-Y分量（亮度）：前面一大块，大小为宽 × 高，每个像素一个字节。
-U分量（色度，Cb）：紧接着Y分量，大小为 (宽/2) × (高/2)，每个像素一个字节。
-V分量（色度，Cr）：最后一块，大小同U分量，也是 (宽/2) × (高/2)，每个像素一个字节。
-整体内存布局是：
+        Y分量（亮度）：前面一大块，大小为宽 × 高，每个像素一个字节。
+        U分量（色度，Cb）：紧接着Y分量，大小为 (宽/2) × (高/2)，每个像素一个字节。
+        V分量（色度，Cr）：最后一块，大小同U分量，也是 (宽/2) × (高/2)，每个像素一个字节。
+        整体内存布局是：
 
-其中 Y 是每个像素，U/V 是每2×2像素共用一个值（即采样率为 1/4）。
+        其中 Y 是每个像素，U/V 是每2×2像素共用一个值（即采样率为 1/4）。
 
-举例：假设图像为 640×480
+        举例：假设图像为 640×480
 
-Y: 640×480 字节
-U: 320×240 字节
-V: 320×240 字节
-总内存 = 640×480 + 320×240 + 320×240 字节
+        Y: 640×480 字节
+        U: 320×240 字节
+        V: 320×240 字节
+        总内存 = 640×480 + 320×240 + 320×240 字节
 
-在 OpenCV 的 cv::Mat 中，所有数据是连续存储的，可以通过 yuv.data 指针访问。
-*/
+        在 OpenCV 的 cv::Mat 中，所有数据是连续存储的，可以通过 yuv.data 指针访问。
+        */
 
         // 验证YUV_I420内存排布：输出Y、U、V分量的起始地址和部分数据
         int width = yuv.cols / 1.5;
@@ -87,7 +91,8 @@ V: 320×240 字节
         uchar* y_ptr = yuv.data;
         uchar* u_ptr = yuv.data + y_size;
         uchar* v_ptr = yuv.data + y_size + uv_size;
-        std::cout << "Y plane start: " << (void*)y_ptr << ", U plane start: " << (void*)u_ptr << ", V plane start: " << (void*)v_ptr << std::endl;
+        std::cout << "Y plane start: " << (void*)y_ptr << ", U plane start: " << (void*)u_ptr
+                  << ", V plane start: " << (void*)v_ptr << std::endl;
         std::cout << "First 8 Y values: ";
         for (int i = 0; i < 8 && i < y_size; ++i) std::cout << (int)y_ptr[i] << " ";
         std::cout << "\nFirst 8 U values: ";
@@ -96,8 +101,7 @@ V: 320×240 字节
         for (int i = 0; i < 8 && i < uv_size; ++i) std::cout << (int)v_ptr[i] << " ";
         std::cout << std::endl;
 
-        
-        
+
         std::cout << std::endl;
     }
 
