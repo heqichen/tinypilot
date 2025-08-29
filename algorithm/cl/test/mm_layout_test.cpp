@@ -19,8 +19,7 @@ TEST(mm_layout, smoke_test) {
     constexpr const std::size_t kUSize {kWidth * kHeight / 4};    // U
     constexpr const std::size_t kVSize {kWidth * kHeight / 4};    // V
 
-    // 0 2
-    // 1 3
+
     const std::vector<std::uint8_t> inputBuffer {
       1U,  2U,  1U,  2U,  1U,  2U,  1U,  2U, 3U, 4U, 3U, 4U, 3U, 4U, 3U, 4U,    // Y
       5U,  6U,  5U,  6U,  5U,  6U,  5U,  6U, 7U, 8U, 7U, 8U, 7U, 8U, 7U, 8U,    // Y
@@ -28,11 +27,14 @@ TEST(mm_layout, smoke_test) {
       10U, 10U, 10U, 10U, 10U, 10U, 10U, 10U                                    // V
     };
 
+    // 0 2
+    // 1 3
+
     const std::vector<std::uint8_t> expectedOutputBuffer {
-      1U,  1U,  1U,  1U,  3U,  3U,  3U,  3U,    // top left
-      5U,  5U,  5U,  5U,  7U,  7U,  7U,  7U,    // top right
-      2U,  2U,  2U,  2U,  4U,  4U,  4U,  4U,    // bottom left
-      6U,  6U,  6U,  6U,  8U,  8U,  8U,  8U,    // bottom right
+      1U,  1U,  1U,  1U,  3U,  3U,  3U,  3U,    // top left, 1U, 3U
+      5U,  5U,  5U,  5U,  7U,  7U,  7U,  7U,    // bottom left, 5U, 7U
+      2U,  2U,  2U,  2U,  4U,  4U,  4U,  4U,    // top right, 2U, 4U
+      6U,  6U,  6U,  6U,  8U,  8U,  8U,  8U,    // bottom right, 6U, 8U
       9U,  9U,  9U,  9U,  9U,  9U,  9U,  9U,    // U
       10U, 10U, 10U, 10U, 10U, 10U, 10U, 10U    // V
     };
