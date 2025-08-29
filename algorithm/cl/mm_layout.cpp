@@ -65,35 +65,39 @@ void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const 
         clReleaseProgram(program);
         assert(0);
     }
-    cl_kernel kernel = CL_CHECK_ERR(clCreateKernel(program, "add_one", &err));    // kernel function in mm_layout.cl
 
+    // Load kernel function in mm_layout.cl
+    cl_kernel loadyKernel = CL_CHECK_ERR(clCreateKernel(program, "loadys", &err));
+    cl_kernel loaduvKernel = CL_CHECK_ERR(clCreateKernel(program, "loaduv", &err));
     cl_command_queue queue = CL_CHECK_ERR(clCreateCommandQueueWithProperties(context, device, nullptr, &err));
-    std::vector<int> data {};
-    for (int i = 0; i < testSize; ++i) data.push_back(i);
-
-    cl_mem clBuffer = CL_CHECK_ERR(
-      clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, data.size() * sizeof(int), data.data(), &err));
 
 
-    CL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), &clBuffer));
-    std::size_t globalWorkSize = testSize;
-    CL_CHECK(clEnqueueNDRangeKernel(queue, kernel, 1, nullptr, &globalWorkSize, nullptr, 0, nullptr, nullptr));
+    const std::size_t ysize = width * height;
+    const std::size_t uvsize = (width / 2) * (height / 2);
+    const std::size_t totalSize = ysize + uvsize * 2;
+
+    cl_mem clInputBuffer =
+      CL_CHECK_ERR(clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, totalSize, (void *)src, &err));
+    cl_mem clOutputBuffer = CL_CHECK_ERR(clCreateBuffer(context, CL_MEM_WRITE_ONLY, totalSize, nullptr, &err));
+
+    // Run kernel
+    cl_int clWidth = width;
+    cl_int clHeight = height;
+    CL_CHECK(clSetKernelArg(loadyKernel, 0, sizeof(cl_mem), &clInputBuffer));
+    CL_CHECK(clSetKernelArg(loadyKernel, 1, sizeof(cl_mem), &clOutputBuffer));
+    CL_CHECK(clSetKernelArg(loadyKernel, 2, sizeof(cl_int), &clWidth));
+    CL_CHECK(clSetKernelArg(loadyKernel, 3, sizeof(cl_int), &clHeight));
+    const std::size_t globalWorkSize = width * height / 8;
+    CL_CHECK(clEnqueueNDRangeKernel(queue, loadyKernel, 1, nullptr, &globalWorkSize, nullptr, 0, nullptr, nullptr));
 
     // Same as below
-    CL_CHECK(clFinish(queue));
-
-    CL_CHECK(
-      clEnqueueReadBuffer(queue, clBuffer, CL_TRUE, 0, sizeof(int) * globalWorkSize, data.data(), 0, nullptr, nullptr));
-
-    for (const auto i : data) {
-        std::printf("%d ", i);
-    }
-    std::printf("\r\n");
-
+    // CL_CHECK(clFinish(queue));
+    clEnqueueReadBuffer(queue, clOutputBuffer, CL_TRUE, 0, totalSize, dst, 0, nullptr, nullptr);
 
     // clReleaseMemObject(buffer); clReleaseCommandQueue(queue); clReleaseContext(context); return 1;
-    clReleaseMemObject(clBuffer);
-    clReleaseKernel(kernel);
+    clReleaseMemObject(clInputBuffer);
+    clReleaseMemObject(clOutputBuffer);
+    clReleaseKernel(loadyKernel);
     clReleaseProgram(program);
     clReleaseCommandQueue(queue);
     clReleaseContext(context);
@@ -102,8 +106,3 @@ void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const 
 }    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc
-
-
-int main(int argc, char *argv[], char *envs[]) {
-    return 0;
-}
