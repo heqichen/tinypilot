@@ -83,12 +83,33 @@ void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const 
     // Run kernel
     cl_int clWidth = width;
     cl_int clHeight = height;
+    // TODO: Put this 8 division to define, and pass to cl kernel
+    constexpr std::size_t kElementSizePerWorker {8U};
+    const std::size_t loadYWorkSize = width * height / kElementSizePerWorker;
     CL_CHECK(clSetKernelArg(loadyKernel, 0, sizeof(cl_mem), &clInputBuffer));
     CL_CHECK(clSetKernelArg(loadyKernel, 1, sizeof(cl_mem), &clOutputBuffer));
     CL_CHECK(clSetKernelArg(loadyKernel, 2, sizeof(cl_int), &clWidth));
     CL_CHECK(clSetKernelArg(loadyKernel, 3, sizeof(cl_int), &clHeight));
-    const std::size_t globalWorkSize = width * height / 8;
-    CL_CHECK(clEnqueueNDRangeKernel(queue, loadyKernel, 1, nullptr, &globalWorkSize, nullptr, 0, nullptr, nullptr));
+    CL_CHECK(clEnqueueNDRangeKernel(queue, loadyKernel, 1, nullptr, &loadYWorkSize, nullptr, 0, nullptr, nullptr));
+
+    // U
+    cl_int clUOffset = width * height;
+    const std::size_t loadUVWorkSize = (width * height) / 4U / kElementSizePerWorker;
+    CL_CHECK(clSetKernelArg(loaduvKernel, 0, sizeof(cl_mem), &clInputBuffer));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 1, sizeof(cl_mem), &clOutputBuffer));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 2, sizeof(cl_int), &clWidth));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 3, sizeof(cl_int), &clHeight));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 4, sizeof(cl_int), &clUOffset));
+    CL_CHECK(clEnqueueNDRangeKernel(queue, loaduvKernel, 1, nullptr, &loadUVWorkSize, nullptr, 0, nullptr, nullptr));
+
+    // V
+    cl_int clVOffset = (width * height) + ((width * height) / 4U);
+    CL_CHECK(clSetKernelArg(loaduvKernel, 0, sizeof(cl_mem), &clInputBuffer));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 1, sizeof(cl_mem), &clOutputBuffer));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 2, sizeof(cl_int), &clWidth));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 3, sizeof(cl_int), &clHeight));
+    CL_CHECK(clSetKernelArg(loaduvKernel, 4, sizeof(cl_int), &clVOffset));
+    CL_CHECK(clEnqueueNDRangeKernel(queue, loaduvKernel, 1, nullptr, &loadUVWorkSize, nullptr, 0, nullptr, nullptr));
 
     // Same as below
     // CL_CHECK(clFinish(queue));

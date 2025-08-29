@@ -7,15 +7,13 @@ __kernel void add_one(__global int* data) {
     data[id] /= 50;
 }
 
-// #define UV_SIZE ((TRANSFORMED_WIDTH / 2) * (TRANSFORMED_HEIGHT / 2))
-
 __kernel void loadys(__global uchar8 const* const Y, __global uchar* out, int width, int height) {
     const int gid = get_global_id(0);
     const int ois = gid * 8;
     const int UV_SIZE = (width / 2) * (height / 2);
 
     const int oy = ois / width;
-    const int ox = ois % height;
+    const int ox = ois % width;
 
     const uchar8 ys = Y[gid];
 
@@ -36,8 +34,8 @@ __kernel void loadys(__global uchar8 const* const Y, __global uchar* out, int wi
     vstore4(ys.s1357, 0, outy1 + (oy / 2) * (width / 2) + ox / 2);
 }
 
-__kernel void loaduv(__global uchar8 const* const in, __global uchar8* out, int out_offset) {
+__kernel void loaduv(__global uchar8 const* const in, __global uchar8* out, int width, int height, int out_offset) {
     const int gid = get_global_id(0);
-    const uchar8 inv = in[gid];
+    const uchar8 inv = in[gid + out_offset / 8];
     out[gid + out_offset / 8] = inv;
 }
