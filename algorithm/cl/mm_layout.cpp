@@ -1,36 +1,11 @@
-#include "mm_layout.h"
-#include <cassert>
+#include "algorithm/cl/mm_layout.h"
 #include <cstdio>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <vector>
+#include "algorithm/cl/cl_util.h"
 
 namespace cooboc {
 namespace algorithm {
 namespace cl {
-
-
-#define CL_CHECK(_expr)                \
-    do {                               \
-        assert(CL_SUCCESS == (_expr)); \
-    } while (0)
-
-#define CL_CHECK_ERR(_expr)               \
-    ({                                    \
-        cl_int err = CL_INVALID_VALUE;    \
-        __typeof__(_expr) _ret = _expr;   \
-        assert(_ret &&err == CL_SUCCESS); \
-        _ret;                             \
-    })
-
-
-std::string readFile(const std::string &filepath) {
-    std::ifstream file(filepath, std::ios::binary | std::ios::in);
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    return buffer.str();
-}
 
 
 // https://github.com/KhronosGroup/OpenCL-TTL/blob/464e2e14e8e1bc59b74bf922ab6f3dc7c5518d25/opencl/samples/cpp/TTL_sample_runner.cpp#L152
@@ -74,7 +49,7 @@ void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const 
 
     const std::size_t ysize = width * height;
     const std::size_t uvsize = (width / 2) * (height / 2);
-    const std::size_t totalSize = ysize + uvsize * 2;
+    const std::size_t totalSize = ysize + (uvsize * 2);
 
     cl_mem clInputBuffer =
       CL_CHECK_ERR(clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, totalSize, (void *)src, &err));
