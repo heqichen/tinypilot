@@ -5,9 +5,12 @@
 namespace cooboc {
 namespace algorithm {
 namespace cl {
+
+
 void transform(const std::uint8_t *videoFrame,
                const std::size_t width,
                const std::size_t height,
+               const TransformParameter &transformParameter,
                std::uint8_t *transformedFrame) {
     cl_platform_id platform {};
     cl_device_id device {};
@@ -64,14 +67,27 @@ void transform(const std::uint8_t *videoFrame,
     const std::size_t outputUVSize = (kOutputWidth / 2) * (kOutputHeight / 2);
     const std::size_t outputSize = outputYSize + (outputUVSize * 2);
 
+    const float transformParameterArray[3] {
+      transformParameter.scale, transformParameter.offsetX, transformParameter.offsetY};
+
     cl_mem clInputFrame = CL_CHECK_ERR(
       clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, inputSize, (void *)videoFrame, &err));
     cl_mem clOutputBuffer = CL_CHECK_ERR(clCreateBuffer(context, CL_MEM_WRITE_ONLY, outputSize, nullptr, &err));
+    cl_mem clTransformParameter = CL_CHECK_ERR(clCreateBuffer(context,
+                                                              CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR,
+                                                              sizeof(transformParameterArray),
+                                                              (void *)transformParameterArray,
+                                                              &err));
+
+
     const std ::size_t transformYWorkSize = kOutputWidth;
 
     // Run kernel
+    cl_int clInputWidth = width;
     CL_CHECK(clSetKernelArg(transformYKernel, 0, sizeof(cl_mem), &clInputFrame));
-    CL_CHECK(clSetKernelArg(transformYKernel, 1, sizeof(cl_mem), &clOutputBuffer));
+    CL_CHECK(clSetKernelArg(transformYKernel, 1, sizeof(cl_int), &clInputWidth));
+    CL_CHECK(clSetKernelArg(transformYKernel, 2, sizeof(cl_mem), &clTransformParameter));
+    CL_CHECK(clSetKernelArg(transformYKernel, 3, sizeof(cl_mem), &clOutputBuffer));
     CL_CHECK(
       clEnqueueNDRangeKernel(queue, transformYKernel, 1, nullptr, &transformYWorkSize, nullptr, 0, nullptr, nullptr));
 
