@@ -8,7 +8,7 @@
 
 namespace cooboc {
 namespace algorithm {
-namespace ml {
+namespace cl {
 
 #define CL_CHECK(_expr)                \
     do {                               \
@@ -30,6 +30,6 @@ std::string readFile(const std::string &filepath) {
     return buffer.str();
 }
 
-}    // namespace ml
+}    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc

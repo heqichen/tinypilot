@@ -1,4 +1,4 @@
-#include "algorithm/ml/transform.h"
+#include "algorithm/cl/transform.h"
 #include <gtest/gtest.h>
 #include <array>
 #include <cstdint>
@@ -7,7 +7,7 @@
 
 namespace cooboc {
 namespace algorithm {
-namespace ml {
+namespace cl {
 namespace {
 
 TEST(TransformParameterTest, givenInputShouldCalculateCorrectly) {
@@ -74,6 +74,6 @@ TEST(transform, smoke_test) {
 }
 
 }    // namespace
-}    // namespace ml
+}    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc

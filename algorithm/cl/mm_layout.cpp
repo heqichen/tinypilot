@@ -1,11 +1,11 @@
-#include "algorithm/ml/mm_layout.h"
+#include "algorithm/cl/mm_layout.h"
 #include <cstdio>
 #include <vector>
-#include "algorithm/ml/cl_util.h"
+#include "algorithm/cl/cl_util.h"
 
 namespace cooboc {
 namespace algorithm {
-namespace ml {
+namespace cl {
 
 
 // https://github.com/KhronosGroup/OpenCL-TTL/blob/464e2e14e8e1bc59b74bf922ab6f3dc7c5518d25/opencl/samples/cpp/TTL_sample_runner.cpp#L152
@@ -99,6 +99,6 @@ void reorderImageLayout(const std::uint8_t *src, const std::size_t width, const 
     clReleaseContext(context);
 }
 
-}    // namespace ml
+}    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc

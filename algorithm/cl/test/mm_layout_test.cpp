@@ -1,4 +1,4 @@
-#include "algorithm/ml/mm_layout.h"
+#include "algorithm/cl/mm_layout.h"
 #include <gtest/gtest.h>
 #include <cstdint>
 #include <cstdio>
@@ -7,7 +7,7 @@
 
 namespace cooboc {
 namespace algorithm {
-namespace ml {
+namespace cl {
 namespace {
 
 
@@ -55,6 +55,6 @@ TEST(mm_layout, smoke_test) {
 }
 
 }    // namespace
-}    // namespace ml
+}    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc
