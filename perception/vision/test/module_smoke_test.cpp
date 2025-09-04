@@ -1,14 +1,14 @@
-#include "algorithm/cl/test/module_smoke_test.h"
+#include "perception/vision/test/module_smoke_test.h"
 #include <gtest/gtest.h>
 #include <array>
 #include <cstdint>
 #include <cstdio>
 #include <vector>
-#include "algorithm/cl/prepare.h"
+#include "perception/vision/prepare.h"
 
 namespace cooboc {
-namespace algorithm {
-namespace cl {
+namespace perception {
+namespace vision {
 namespace {
 
 
@@ -45,6 +45,6 @@ TEST(ALGO_ML_TEST, smoke_test) {
 }
 
 }    // namespace
-}    // namespace cl
-}    // namespace algorithm
+}    // namespace vision
+}    // namespace perception
 }    // namespace cooboc

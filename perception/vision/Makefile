@@ -11,6 +11,6 @@ prepare.o: prepare.cpp | prepare.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f prepare.o
+	rm -f prepare.o *.cl
 
 .PHONY: clean all
