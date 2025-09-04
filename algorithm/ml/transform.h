@@ -7,7 +7,7 @@
 
 namespace cooboc {
 namespace algorithm {
-namespace cl {
+namespace ml {
 
 struct TransformParameter {
     float scale;
@@ -34,7 +34,7 @@ void transform(const std::uint8_t *videoFrame,
                const std::size_t height,
                const TransformParameter &transformParameter,
                std::uint8_t *transformedFrame);
-}    // namespace cl
+}    // namespace ml
 }    // namespace algorithm
 }    // namespace cooboc
 

@@ -1,10 +1,10 @@
-#include "algorithm/cl/transform.h"
+#include "algorithm/ml/transform.h"
 #include <cstdint>
-#include "algorithm/cl/cl_util.h"
+#include "algorithm/ml/cl_util.h"
 
 namespace cooboc {
 namespace algorithm {
-namespace cl {
+namespace ml {
 
 
 void transform(const std::uint8_t *videoFrame,
@@ -101,6 +101,6 @@ void transform(const std::uint8_t *videoFrame,
     clReleaseCommandQueue(queue);
     clReleaseContext(context);
 }
-}    // namespace cl
+}    // namespace ml
 }    // namespace algorithm
 }    // namespace cooboc
