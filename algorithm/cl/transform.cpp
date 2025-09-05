@@ -1,4 +1,5 @@
 #include "algorithm/cl/transform.h"
+#include <cassert>
 #include <cstdint>
 #include "algorithm/cl/cl_util.h"
 

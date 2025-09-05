@@ -1,20 +1,26 @@
 include ../../../common.mk
 
-CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
-LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) 
+LD = g++
 
-TARGET = simple_cl_test mm_layout_test cl_info transform_test module_smoke_test
+CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
+LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
+TARGET = simple_cl_test mm_layout_test cl_info transform_test
 
 all: $(TARGET)
 
-mm_layout_test: | CHECK_DEPS
-transform_test: | CHECK_DEPS
-module_smoke_test: ../prepare.o | CHECK_DEPS
 
-simple_cl_test: simple_cl_test.o
+transform_test.o: transform_test.cpp transform_test.h
 
+transform_test: transform_test.o ../transform.o | CHECK_DEPS Makefile transform.cl
+mm_layout_test: mm_layout_test.o ../mm_layout.o | CHECK_DEPS Makefile mm_layout.cl
 
+$(TARGET):
+	$(LD) $^ $(LDFLAGS) -o $@
 
+simple_cl_test: simple_cl_test.o | Makefile
+	$(CXX) $^ -lOpenCL -o $@	
+
+# %_test: %_test.o ../%.o | %.cl 
 
 cl_info: cl_info.o
 
@@ -24,29 +30,14 @@ test: $(TARGET)
 CHECK_DEPS:
 	$(MAKE) -C ../ all
 
-# mm_layout_test: mm_layout_test.o ../mm_layout.o | mm_layout.cl
-# 	$(CXX) $^ $(LDFLAGS) -lgtest_main -lgtest -o $@
-
-# transform_test: transform_test.o ../transform.o | transform.cl
-# 	$(CXX) $^ $(LDFLAGS) -lgtest_main -lgtest -o $@
-
-module_smoke_test: module_smoke_test.o
-	$(CXX) $^ $(LDFLAGS) -lgtest_main -lgtest -o $@
-
-%_test: %_test.o ../%.o | %.cl
-	$(CXX) $^ $(LDFLAGS) -lgtest_main -lgtest -o $@	
-
 %.cl: ../%.cl
-	cp $< $@
+	$(CP) $< $@
 
+# %: %.o
+# 	$(CXX) $^ $(LDFLAGS) -o $@ 
 
-
-
-%: %.o
-	$(CXX) $^ $(LDFLAGS) -o $@ 
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# %.o: %.cpp
+# 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(TARGET) simple_cl_test.o mm_layout_test.o cl_info.o transform_test.o mm_layout.cl transform.cl module_smoke_test.o

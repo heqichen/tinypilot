@@ -9,7 +9,7 @@
             "compilerPath": "/usr/bin/g++",
             "intelliSenseMode": "linux-gcc-arm64",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/",
                 "/usr/include/opencv4",
                 "third_party/ArmNN/output/include",
                 "third_party/googletest/install/include"

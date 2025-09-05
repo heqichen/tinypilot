@@ -1,9 +1,10 @@
-#include "algorithm/cl/transform.h"
+#include "algorithm/cl/test/transform_test.h"
 #include <gtest/gtest.h>
 #include <array>
 #include <cstdint>
 #include <cstdio>
 #include <vector>
+#include "algorithm/cl/transform.h"
 
 namespace cooboc {
 namespace algorithm {
