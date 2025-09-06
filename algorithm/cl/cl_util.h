@@ -1,9 +1,10 @@
 
+#ifndef __ALGORITHM_CL_CL_UTIL_H__
+#define __ALGORITHM_CL_CL_UTIL_H__
+
 #define CL_TARGET_OPENCL_VERSION 300
 #include <CL/cl.h>
 #include <cassert>
-#include <fstream>
-#include <sstream>
 #include <string>
 
 namespace cooboc {
@@ -23,13 +24,10 @@ namespace cl {
         _ret;                             \
     })
 
-std::string readFile(const std::string &filepath) {
-    std::ifstream file(filepath, std::ios::binary | std::ios::in);
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    return buffer.str();
-}
+std::string readFile(const std::string &filepath);
 
 }    // namespace cl
 }    // namespace algorithm
 }    // namespace cooboc
+
+#endif

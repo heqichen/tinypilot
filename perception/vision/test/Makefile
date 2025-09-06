@@ -6,7 +6,15 @@ TARGET = prepare_test
 
 all: $(TARGET)
 $(TARGET): | CHECK_DEPS
-prepare_test: prepare_test.o ../prepare.o $(WORKSPACE_ROOT)/algorithm/cl/transform.o | Makefile transform.cl
+
+PREPARE_TEST_DEP_OBJS :=  ../prepare.o
+PREPARE_TEST_DEP_OBJS += $(WORKSPACE_ROOT)/algorithm/cl/transform.o
+PREPARE_TEST_DEP_OBJS += $(WORKSPACE_ROOT)/algorithm/cl/mm_layout.o
+PREPARE_TEST_DEP_OBJS += $(WORKSPACE_ROOT)/algorithm/cl/cl_util.o
+
+
+
+prepare_test: prepare_test.o  $(PREPARE_TEST_DEP_OBJS) | Makefile transform.cl mm_layout.cl
 
 test: $(TARGET)
 	./prepare_test

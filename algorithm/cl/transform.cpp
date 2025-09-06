@@ -99,12 +99,6 @@ void transform(const std::uint8_t *videoFrame,
                                                                      (void *)transformYParameterArray,
                                                                      &err));
     cl_int clOutputOffset = 0;
-    std::printf("Y: scale: %f, offsetX: %f, offsetY: %f\r\n offset input: %u, output: %u\r\n",
-                transParamY.scale,
-                transParamY.offsetX,
-                transParamY.offsetY,
-                clInputOffset,
-                clOutputOffset);
     CL_CHECK(clSetKernelArg(transformYKernel, 0, sizeof(cl_mem), &clInputFrame));
     CL_CHECK(clSetKernelArg(transformYKernel, 1, sizeof(cl_int), &clInputOffset));
     CL_CHECK(clSetKernelArg(transformYKernel, 2, sizeof(cl_int), &clInputWidth));
@@ -128,12 +122,6 @@ void transform(const std::uint8_t *videoFrame,
                                                                       (void *)transformUVParameterArray,
                                                                       &err));
     clOutputOffset = outputYSize;
-    std::printf("Y: scale: %f, offsetX: %f, offsetY: %f\r\n offset input: %u, output: %u\r\n",
-                transformUVParameterArray[0],
-                transformUVParameterArray[1],
-                transformUVParameterArray[2],
-                clInputOffset,
-                clOutputOffset);
     CL_CHECK(clSetKernelArg(transformUVKernel, 0, sizeof(cl_mem), &clInputFrame));
     CL_CHECK(clSetKernelArg(transformUVKernel, 1, sizeof(cl_int), &clInputOffset));
     CL_CHECK(clSetKernelArg(transformUVKernel, 2, sizeof(cl_int), &clInputWidth));
@@ -148,12 +136,12 @@ void transform(const std::uint8_t *videoFrame,
     // V
     clInputOffset = inputYSize + inputUVSize;
     clOutputOffset = outputYSize + outputUVSize;
-    std::printf("Y: scale: %f, offsetX: %f, offsetY: %f\r\n offset input: %u, output: %u\r\n",
-                transformUVParameterArray[0],
-                transformUVParameterArray[1],
-                transformUVParameterArray[2],
-                clInputOffset,
-                clOutputOffset);
+    // std::printf("Y: scale: %f, offsetX: %f, offsetY: %f\r\n offset input: %u, output: %u\r\n",
+    //             transformUVParameterArray[0],
+    //             transformUVParameterArray[1],
+    //             transformUVParameterArray[2],
+    //             clInputOffset,
+    //             clOutputOffset);
     CL_CHECK(clSetKernelArg(transformUVKernel, 0, sizeof(cl_mem), &clInputFrame));
     CL_CHECK(clSetKernelArg(transformUVKernel, 1, sizeof(cl_int), &clInputOffset));
     CL_CHECK(clSetKernelArg(transformUVKernel, 2, sizeof(cl_int), &clInputWidth));
