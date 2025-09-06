@@ -29,5 +29,17 @@
         "PYTHONPATH": "${workspaceFolder}"
       }
     },
+    {
+      "name": "C/C++: g++ build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/system/test/module/vision_smoke_test",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/system/test/module/",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+    }
   ]
 }

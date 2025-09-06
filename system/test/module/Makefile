@@ -8,15 +8,18 @@ TARGETS := vision_smoke_test
 OBJS := $(WORKSPACE_ROOT)/perception/vision/prepare.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/transform.o
 
-vision_smoke_test: vision_smoke_test.o $(OBJS) | CHECK_DEPS transform.cl 
+$(TARGETS) : | CHECK_DEPS
 
+vision_smoke_test: vision_smoke_test.o $(OBJS) |  transform.cl  
 vision_smoke_test.o: vision_smoke_test.cpp | vision_smoke_test.h Makefile
+
+all:$(TARGETS)
 
 %.o:
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
-%:
-	$(CXX) $^ $(LDFLAGS) -o $@
+%: %.o
+	$(LD) $^ $(LDFLAGS) -o $@
 
 transform.cl:
 	$(CP) $(WORKSPACE_ROOT)/algorithm/cl/transform.cl $@

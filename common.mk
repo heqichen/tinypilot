@@ -26,6 +26,16 @@ endif
 
 ifeq ($(DEBUG),1)
 CXXFLAGS += -g -O0
+LDFLAGS += -g -O0
+else
 endif
 
 CP := cp
+
+
+
+# MAKE := DEBUG=$(DEBUG) CLANG=$(CLANG) make
+# cleanall:
+# 	$(MAKE) -C $(WORKSPACE_ROOT) clean
+# .PHONY: cleanall
+
