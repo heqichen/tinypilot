@@ -1,34 +1,30 @@
 include ../../../common.mk
 
 CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
-LDFLAGS += -L$(GTEST_LIB_DIR) -lOpenCL
-
-TARGET = module_smoke_test
+LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
+TARGET = prepare_test
 
 all: $(TARGET)
-
-module_smoke_test: ../prepare.o $(WORKSPACE_ROOT)/algorithm/cl/transform.o |  transform.cl CHECK_DEPS
+$(TARGET): | CHECK_DEPS
+prepare_test: prepare_test.o ../prepare.o $(WORKSPACE_ROOT)/algorithm/cl/transform.o | Makefile transform.cl
 
 test: $(TARGET)
-	./module_smoke_test
+	./prepare_test
+
+
+
+%.cl: $(WORKSPACE_ROOT)/algorithm/cl/%.cl
+	$(CP) $< $@
+
+$(TARGET):
+	$(LD) $^ $(LDFLAGS) -o $@
 
 CHECK_DEPS:
 	$(MAKE) -C ../ all
-	$(MAKE) -C $(WORKSPACE_ROOT)/algorithm/cl all
-
-module_smoke_test: module_smoke_test.o
-	$(CXX) $^ $(LDFLAGS) -lgtest_main -lgtest -o $@
-
-%.cl: $(WORKSPACE_ROOT)/algorithm/cl/%.cl
-	cp $< $@
-
-%: %.o
-	$(CXX) $^ $(LDFLAGS) -o $@ 
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(MAKE) -C  $(WORKSPACE_ROOT)/algorithm/cl all
 
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) *.o *.cl
 
-.PHONY: clean test CHECK_DEPS
+.PHONY: all clean test CHECK_DEPS
+
