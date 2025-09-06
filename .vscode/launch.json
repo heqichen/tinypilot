@@ -30,13 +30,14 @@
       }
     },
     {
-      "name": "C/C++: g++ build and debug active file",
+      "name": "c++",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/system/test/module/vision_smoke_test",
+      // "program": "${workspaceFolder}/system/test/module/vision_smoke_test",
+      "program": "${workspaceFolder}/algorithm/cl/test/transform_test",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/system/test/module/",
+      "cwd": "${workspaceFolder}/algorithm/cl/test/",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",

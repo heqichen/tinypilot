@@ -3,6 +3,7 @@
 test:
 	$(MAKE) -C sensor/vision/test all
 	$(MAKE) -C perception/vision/ml
+	$(MAKE) -C algorithm/cl/test test
 
 model:
 	$(MAKE) -C structure all
