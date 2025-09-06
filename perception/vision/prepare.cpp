@@ -1,6 +1,8 @@
 #include "perception/vision/prepare.h"
 #include <array>
 #include <cstdint>
+#include <cstring>
+#include "algorithm/cl/mm_layout.h"
 #include "algorithm/cl/transform.h"
 
 namespace cooboc {
@@ -18,23 +20,11 @@ void prepare(std::uint8_t const* const video_frame,
     const std::size_t outputUVSize = 512U * 256U / 4U;
 
     // Transfrom big image into small
-    const algorithm::cl::TransformParameter transParamY {
-      algorithm::cl::makeTransformParameter(width, height, 512U, 256U)};
-    const algorithm::cl::TransformParameter transParamUV {
-      transParamY.scale, transParamY.offsetX / 2.0F, transParamY.offsetY / 2.0F};
-
     std::array<std::uint8_t, 512U * 256U * 3U / 2U> resizedFrame {};
-    // Y
-    algorithm::cl::transform(video_frame, width, height, transParamY, resizedFrame.data());
-    // U
-    algorithm::cl::transform(
-      video_frame + inputYSize, width / 2U, height / 2U, transParamUV, resizedFrame.data() + outputYSize);
-    // V
-    algorithm::cl::transform(video_frame + inputYSize + inputUVSize,
-                             width / 2U,
-                             height / 2U,
-                             transParamUV,
-                             resizedFrame.data() + outputYSize + outputUVSize);
+
+    algorithm::cl::transform(video_frame, width, height, resizedFrame.data());
+    // Reorder memory layout
+    algorithm::cl::reorderImageLayout(resizedFrame.data(), 512U, 256U, image_data);
 }
 }    // namespace vision
 }    // namespace perception

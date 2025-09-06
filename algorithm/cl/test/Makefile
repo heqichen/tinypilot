@@ -1,7 +1,5 @@
 include ../../../common.mk
 
-LD = g++
-
 CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
 LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
 TARGET = simple_cl_test mm_layout_test cl_info transform_test
@@ -45,4 +43,4 @@ CHECK_DEPS:
 clean:
 	rm -f $(TARGET) simple_cl_test.o mm_layout_test.o cl_info.o transform_test.o mm_layout.cl transform.cl module_smoke_test.o
 
-.PHONY: clean test CHECK_DEPS
+.PHONY: all clean test CHECK_DEPS

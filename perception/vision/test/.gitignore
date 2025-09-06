@@ -1,2 +1,4 @@
 *.o
 *.cl
+prepare_test
+
