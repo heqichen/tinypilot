@@ -1,4 +1,4 @@
-#include "perception/vision/test/module_smoke_test.h"
+#include "system/test/module/vision_smoke_test.h"
 #include <gtest/gtest.h>
 #include <array>
 #include <cstdint>
@@ -6,11 +6,10 @@
 #include <vector>
 #include "perception/vision/prepare.h"
 
-namespace cooboc {
-namespace perception {
-namespace vision {
-namespace {
 
+namespace cooboc {
+namespace module_test {
+namespace {
 
 TEST(ALGO_ML_TEST, smoke_test) {
     // Setup
@@ -41,10 +40,9 @@ TEST(ALGO_ML_TEST, smoke_test) {
     // Prepare
     // TODO move to cl later
     std::array<std::uint8_t, 128 * 256 * 6> imageData {};
-    prepare(videoFrame.data(), kVideoWidth, kVideoHeight, imageData.data());
+    perception::vision::prepare(videoFrame.data(), kVideoWidth, kVideoHeight, imageData.data());
 }
 
 }    // namespace
-}    // namespace vision
-}    // namespace perception
+}    // namespace module_test
 }    // namespace cooboc

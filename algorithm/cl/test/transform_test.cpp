@@ -60,18 +60,6 @@ TEST(transform, smoke_test) {
         actualOutput.push_back(outputBuffer[10 * kInputWdith + x]);
     }
     EXPECT_EQ(actualOutput, expectedOutput10Row);
-
-
-    // for (auto i : actualOutput) {
-    //     std::printf("%d ", i);
-    // }
-    // std::printf("\r\n");
-    // for (std::size_t y = 0; y < 10; ++y) {
-    //     for (std::size_t x = 0; x < 10; ++x) {
-    //         std::printf("%d ", outputBuffer[y * kOutputWidth + x]);
-    //     }
-    //     std::printf("\r\n");
-    // }
 }
 
 }    // namespace
