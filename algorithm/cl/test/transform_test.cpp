@@ -85,6 +85,47 @@ TEST(transformTest, givenFrameShouldTransformCorrectly) {
     std::uint8_t lastValue {0U};
 
     // Evaluate Y-Plate
+    for (std::size_t y {0U}; y < kOutputHeight; ++y) {
+        lastValue = 0U;
+        for (std::size_t x {0U}; x < kOutputWidth; ++x) {
+            const std::size_t index = y * kOutputWidth + x;
+            // Y-Plate range from 100 to 115
+            EXPECT_GE(outputBuffer[index], 100U);
+            EXPECT_LE(outputBuffer[index], 115U);
+            // In increase
+            EXPECT_GE(outputBuffer[index], lastValue);
+            lastValue = outputBuffer[index];
+        }
+    }
+
+    // Evaluate U-Plate
+    for (std::size_t y {0U}; y < (kOutputHeight / 2); ++y) {
+        lastValue = 0U;
+        for (std::size_t x {0U}; x < (kOutputWidth / 2); ++x) {
+            const std::size_t index = kOutputYSize + y * (kOutputWidth / 2) + x;
+            // U-Plate range from 128 to 131
+            EXPECT_GE(outputBuffer[index], 128U);
+            EXPECT_LE(outputBuffer[index], 131U);
+            // In increase
+            EXPECT_GE(outputBuffer[index], lastValue);
+            lastValue = outputBuffer[index];
+        }
+    }
+
+    // Evaluate V-Plate
+    for (std::size_t y {0U}; y < (kOutputHeight / 2); ++y) {
+        lastValue = 0U;
+        for (std::size_t x {0U}; x < (kOutputWidth / 2); ++x) {
+            const std::size_t index = kOutputYSize + kOutputUVSize + y * (kOutputWidth / 2) + x;
+            // V-Plate range from 132 to 135
+            EXPECT_GE(outputBuffer[index], 132U);
+            EXPECT_LE(outputBuffer[index], 135U);
+            // In increase
+            EXPECT_GE(outputBuffer[index], lastValue);
+            lastValue = outputBuffer[index];
+        }
+    }
+
 
     // for (std::size_t y {0U}; y < (kOutputHeight * 3 / 2); ++y) {
     //     for (std::size_t x {0U}; x < kOutputWidth; ++x) {
