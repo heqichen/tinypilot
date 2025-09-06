@@ -7,12 +7,12 @@ LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
 TARGET = simple_cl_test mm_layout_test cl_info transform_test
 
 all: $(TARGET)
-
-
+transform_test: | CHECK_DEPS
+mm_layout_test: | CHECK_DEPS
 transform_test.o: transform_test.cpp transform_test.h
 
-transform_test: transform_test.o ../transform.o | CHECK_DEPS Makefile transform.cl
-mm_layout_test: mm_layout_test.o ../mm_layout.o | CHECK_DEPS Makefile mm_layout.cl
+transform_test: transform_test.o ../transform.o | Makefile transform.cl
+mm_layout_test: mm_layout_test.o ../mm_layout.o | Makefile mm_layout.cl
 
 $(TARGET):
 	$(LD) $^ $(LDFLAGS) -o $@
@@ -25,6 +25,9 @@ simple_cl_test: simple_cl_test.o | Makefile
 cl_info: cl_info.o
 
 test: $(TARGET)
+	./simple_cl_test
+	./mm_layout_test
+	./cl_info
 	./transform_test
 
 CHECK_DEPS:
