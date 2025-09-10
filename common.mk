@@ -9,6 +9,11 @@ WORKSPACE_ROOT := $(abspath $(dir $(THIS_MAKEFILE)))
 GTEST_INCLUDE_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/include
 GTEST_LIB_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/lib
 
+ARMNN_INCLUDE_DIR := $(WORKSPACE_ROOT)/third_party/ArmNN/output/include
+ARMNN_LIB_DIR := $(WORKSPACE_ROOT)/third_party/ArmNN/output
+ARMNN_CXXFLAGS := -I$(ARMNN_INCLUDE_DIR)
+ARMNN_LDFLAGS := -L$(ARMNN_LIB_DIR) -larmnn -larmnnTfLiteParser -lprotobuf
+
 CXXFLAGS := -I$(WORKSPACE_ROOT)
 
 ifeq ($(CLANG),1)

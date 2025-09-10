@@ -4,8 +4,8 @@
 #include <cstdint>
 #include <cstdio>
 #include <vector>
+#include "perception/vision/ml/model_runner.h"
 #include "perception/vision/prepare.h"
-
 
 namespace cooboc {
 namespace module_test {
@@ -41,8 +41,18 @@ TEST(ALGO_ML_TEST, smoke_test) {
     // TODO move to cl later
     std::array<std::uint8_t, 128 * 256 * 6> imageData {};
     perception::vision::prepare(videoFrame.data(), kVideoWidth, kVideoHeight, imageData.data());
-}
 
+    std::array<std::uint8_t, 12 * 128 * 256> teleImages;
+    std::array<std::uint8_t, 12 * 128 * 256> wideImages;
+
+    memcpy(teleImages.data(), imageData.data(), 6 * 128 * 256);
+    memcpy(teleImages.data() + 6 * 128 * 256, imageData.data(), 6 * 128 * 256);
+    memcpy(wideImages.data(), imageData.data(), 6 * 128 * 256);
+    memcpy(wideImages.data() + 6 * 128 * 256, imageData.data(), 6 * 128 * 256);
+
+
+    perception::vision::ml::run(teleImages, wideImages);
+}
 }    // namespace
 }    // namespace module_test
 }    // namespace cooboc

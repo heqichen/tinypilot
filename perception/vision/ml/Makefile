@@ -1,22 +1,16 @@
-LD = g++
-CPP = g++
+include ../../../common.mk
 
-CFLAGS += -I ../../../third_party/ArmNN/output/include
-
-LDFLAGS += -L ../../../third_party/ArmNN/output -larmnn -larmnnTfLiteParser -lprotobuf
-
-run: run_tflite
-	LD_LIBRARY_PATH=../../../third_party/ArmNN/output ./$<
-
-run_tflite: run_tflite.o
-	$(LD) -o $@ $< $(LDFLAGS) $(LIBS)
-
-run_tflite.o: run_tflite.cpp
-	$(CPP) -c $< $(CFLAGS) -o $@
+CXXFLAGS += $(ARMNN_CXXFLAGS)
 
 
+all: model_runner.o
+
+model_runner.o: model_runner.cpp model_runner.h Makefile | models/onnx2py_fp32_float32.tflite
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) run_tflite run_tflite.o
+	rm -f *.o
 
-.PHONY: clean
+.PHONY: clean all
