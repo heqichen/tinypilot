@@ -67,7 +67,9 @@
         "forward_list": "cpp",
         "span": "cpp",
         "cinttypes": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "bitset": "cpp",
+        "__nullptr": "cpp"
     },
     "editor.formatOnSave": true
 }

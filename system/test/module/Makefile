@@ -10,13 +10,13 @@ OBJS += $(WORKSPACE_ROOT)/perception/vision/ml/model_runner.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/transform.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/cl_util.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/mm_layout.o
+OBJS += $(WORKSPACE_ROOT)/sensor/vision/input/video_input.o
 
 $(TARGETS) : | CHECK_DEPS
 vision_smoke_test: vision_smoke_test.o $(OBJS) | transform.cl mm_layout.cl models/onnx2py_fp32_float32.tflite
 video_to_nn_test: video_to_nn_test.o $(OBJS) | transform.cl mm_layout.cl models/onnx2py_fp32_float32.tflite
 vision_smoke_test.o: vision_smoke_test.cpp | vision_smoke_test.h Makefile
 video_to_nn_test.o: video_to_nn_test.cpp | video_to_nn_test.h Makefile
-
 
 all:$(TARGETS)
 
@@ -42,6 +42,7 @@ CHECK_DEPS:
 	$(MAKE) -C $(WORKSPACE_ROOT)/perception/vision all
 	$(MAKE) -C $(WORKSPACE_ROOT)/perception/vision/ml all
 	$(MAKE) -C $(WORKSPACE_ROOT)/algorithm/cl all
+	$(MAKE) -C $(WORKSPACE_ROOT)/sensor/vision/input all
 
 clean:
 	rm -f $(TARGETS) *.o *.cl
