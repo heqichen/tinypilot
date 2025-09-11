@@ -3,3 +3,4 @@ video_to_nn_test
 *.o
 *.cl
 models
+assets

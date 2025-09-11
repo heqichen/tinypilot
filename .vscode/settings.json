@@ -69,7 +69,8 @@
         "cinttypes": "cpp",
         "variant": "cpp",
         "bitset": "cpp",
-        "__nullptr": "cpp"
+        "__nullptr": "cpp",
+        "__debug": "cpp"
     },
     "editor.formatOnSave": true
 }

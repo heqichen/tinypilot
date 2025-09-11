@@ -14,10 +14,24 @@ namespace module_test {
 namespace {
 
 
-TEST(ALGO_ML_TEST, GivenVideoShouldOutputCorrectVisionResult) {
+TEST(MODULE_TEST, GivenVideoShouldOutputCorrectVisionResult) {
     const sensor::vision::input::VideoInput::OnVideoFrameCallback onVideoFrameCallback =
-      [](const std::uint8_t *data, std::size_t width, std::size_t height) {
+      [](const std::uint8_t *frameData, std::size_t width, std::size_t height) {
           std::printf("got frame %lu x %lu\r\n", width, height);
+
+
+          std::array<std::uint8_t, 128 * 256 * 6> imageData {};
+          perception::vision::prepare(frameData, width, height, imageData.data());
+
+          std::array<std::uint8_t, 12 * 128 * 256> teleImages;
+          std::array<std::uint8_t, 12 * 128 * 256> wideImages;
+
+          memcpy(teleImages.data(), imageData.data(), 6 * 128 * 256);
+          memcpy(teleImages.data() + 6 * 128 * 256, imageData.data(), 6 * 128 * 256);
+          memcpy(wideImages.data(), imageData.data(), 6 * 128 * 256);
+          memcpy(wideImages.data() + 6 * 128 * 256, imageData.data(), 6 * 128 * 256);
+
+          perception::vision::ml::run(teleImages, wideImages);
       };
 
     // main procedure
@@ -30,6 +44,7 @@ TEST(ALGO_ML_TEST, GivenVideoShouldOutputCorrectVisionResult) {
 
 
     // Run
+
     while (!videoInput.end()) {
         videoInput.tick();
     }

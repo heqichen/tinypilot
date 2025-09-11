@@ -14,6 +14,10 @@ ARMNN_LIB_DIR := $(WORKSPACE_ROOT)/third_party/ArmNN/output
 ARMNN_CXXFLAGS := -I$(ARMNN_INCLUDE_DIR)
 ARMNN_LDFLAGS := -L$(ARMNN_LIB_DIR) -larmnn -larmnnTfLiteParser -lprotobuf
 
+OPENCV_CXXFLAGS := $(shell pkg-config --cflags opencv4)
+OPENCV_LDFLAGS := $(shell pkg-config --libs opencv4)
+
+
 CXXFLAGS := -I$(WORKSPACE_ROOT)
 
 ifeq ($(CLANG),1)
