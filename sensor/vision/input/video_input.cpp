@@ -7,16 +7,14 @@ namespace sensor {
 namespace vision {
 namespace input {
 
-// Replace "output.mp4" with your video file path
-constexpr const char* kVideoPath {"assets/mono_color.mp4"};
 
-VideoInput::VideoInput() :
-    callback_ {[](const std::uint8_t*, std::size_t, std::size_t) {
+VideoInput::VideoInput(const char *videoPath) :
+    callback_ {[](const std::uint8_t *, std::size_t, std::size_t) {
     }},
     isEnd_ {false},
-    cap_ {std::string {kVideoPath}} {
+    cap_ {std::string {videoPath}} {
     if (!cap_.isOpened()) {
-        std::cerr << "Error: Cannot open video file: " << kVideoPath << std::endl;
+        std::cerr << "Error: Cannot open video file: " << videoPath << std::endl;
         throw -1;
     }
 }

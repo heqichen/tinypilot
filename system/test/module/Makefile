@@ -14,7 +14,7 @@ OBJS += $(WORKSPACE_ROOT)/sensor/vision/input/video_input.o
 
 $(TARGETS) : | CHECK_DEPS
 vision_smoke_test: vision_smoke_test.o $(OBJS) | transform.cl mm_layout.cl models/onnx2py_fp32_float32.tflite
-video_to_nn_test: video_to_nn_test.o $(OBJS) | transform.cl mm_layout.cl models/onnx2py_fp32_float32.tflite assets/mono_color.mp4
+video_to_nn_test: video_to_nn_test.o $(OBJS) | transform.cl mm_layout.cl models/onnx2py_fp32_float32.tflite assets/mono_color.mp4 assets/driving_clip.mp4
 vision_smoke_test.o: vision_smoke_test.cpp | vision_smoke_test.h Makefile
 video_to_nn_test.o: video_to_nn_test.cpp | video_to_nn_test.h Makefile
 
@@ -36,6 +36,10 @@ mm_layout.cl:
 	$(CP) $(WORKSPACE_ROOT)/algorithm/cl/mm_layout.cl $@
 
 assets/mono_color.mp4:
+	mkdir -p assets
+	$(CP) $(WORKSPACE_ROOT)/sensor/vision/test/mono_color.mp4 $@
+
+assets/driving_clip.mp4: 
 	mkdir -p assets
 	$(CP) $(WORKSPACE_ROOT)/sensor/vision/test/mono_color.mp4 $@
 

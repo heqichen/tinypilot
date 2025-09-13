@@ -15,10 +15,10 @@ namespace {
 
 
 TEST(MODULE_TEST, GivenVideoShouldOutputCorrectVisionResult) {
+    constexpr const char *kVideoPath = "assets/driving_clip.mp4";
     const sensor::vision::input::VideoInput::OnVideoFrameCallback onVideoFrameCallback =
       [](const std::uint8_t *frameData, std::size_t width, std::size_t height) {
           std::printf("got frame %lu x %lu\r\n", width, height);
-
 
           std::array<std::uint8_t, 128 * 256 * 6> imageData {};
           perception::vision::prepare(frameData, width, height, imageData.data());
@@ -39,7 +39,7 @@ TEST(MODULE_TEST, GivenVideoShouldOutputCorrectVisionResult) {
     // Setup
     // Register callback
 
-    sensor::vision::input::VideoInput videoInput;
+    sensor::vision::input::VideoInput videoInput(kVideoPath);
     videoInput.registerCallback(onVideoFrameCallback);
 
 

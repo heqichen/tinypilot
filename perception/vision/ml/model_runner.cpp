@@ -10,6 +10,7 @@ namespace perception {
 namespace vision {
 namespace ml {
 
+
 void run(std::array<std::uint8_t, 12 * 128 * 256> images, std::array<std::uint8_t, 12 * 128 * 256> bigImages) {
     // Load model
     armnnTfLiteParser::ITfLiteParserPtr parser = armnnTfLiteParser::ITfLiteParser::Create();
@@ -96,22 +97,6 @@ void run(std::array<std::uint8_t, 12 * 128 * 256> images, std::array<std::uint8_
 
     // Execute network
     run->EnqueueWorkload(networkIdentifier, inputTensors, outputTensors);
-
-    // auto start = std::chrono::high_resolution_clock::now();
-
-    // for (int i=0; i<1000; ++i) {
-    //     // Execute network
-    //     run->EnqueueWorkload(networkIdentifier, inputTensors, outputTensors);
-    // }
-    // // Record end time
-    // auto end = std::chrono::high_resolution_clock::now();
-
-    // // Calculate duration
-    // std::chrono::duration<double, std::milli> duration = end - start;
-
-    // // Print the duration
-    // std::cout << "Function execution time: " << duration.count() << " milliseconds" << std::endl;
-
 
     for (int i = 0; i < 632; ++i) {
         std::printf("%f ", outputBuffer[i]);
