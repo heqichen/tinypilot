@@ -50,7 +50,8 @@ TEST(ALGO_ML_TEST, smoke_test) {
     memcpy(wideImages.data(), imageData.data(), 6 * 128 * 256);
     memcpy(wideImages.data() + 6 * 128 * 256, imageData.data(), 6 * 128 * 256);
 
-    perception::vision::ml::run(teleImages, wideImages);
+    std::array<float, 632U> outputBuffer;
+    perception::vision::ml::run(teleImages, wideImages, outputBuffer);
 }
 }    // namespace
 }    // namespace module_test

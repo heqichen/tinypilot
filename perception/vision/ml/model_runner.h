@@ -10,7 +10,10 @@ namespace perception {
 namespace vision {
 namespace ml {
 
-void run(std::array<std::uint8_t, 12 * 128 * 256> images, std::array<std::uint8_t, 12 * 128 * 256> bigImages);
+void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
+         const std::array<std::uint8_t, 12 * 128 * 256>& bigImages,
+         std::array<float, 632U>& output);
+
 
 }    // namespace ml
 }    // namespace vision

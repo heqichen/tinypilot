@@ -16,6 +16,8 @@ VideoInput::VideoInput(const char *videoPath) :
     if (!cap_.isOpened()) {
         std::cerr << "Error: Cannot open video file: " << videoPath << std::endl;
         throw -1;
+    } else {
+        printf("Load video [%s]\r\n", videoPath);
     }
 }
 

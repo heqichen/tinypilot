@@ -4,3 +4,4 @@ video_to_nn_test
 *.cl
 models
 assets
+output

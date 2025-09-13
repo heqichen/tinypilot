@@ -41,12 +41,13 @@ assets/mono_color.mp4:
 
 assets/driving_clip.mp4: 
 	mkdir -p assets
-	$(CP) $(WORKSPACE_ROOT)/sensor/vision/test/mono_color.mp4 $@
+	$(CP) $(WORKSPACE_ROOT)/sensor/vision/test/driving_clip.mp4 $@
 
 models/onnx2py_fp32_float32.tflite:
 	$(CP) -r $(WORKSPACE_ROOT)/perception/vision/ml/models ./
 
 CHECK_DEPS:
+	mkdir -p output
 	$(MAKE) -C $(WORKSPACE_ROOT)/perception/vision all
 	$(MAKE) -C $(WORKSPACE_ROOT)/perception/vision/ml all
 	$(MAKE) -C $(WORKSPACE_ROOT)/algorithm/cl all
@@ -54,5 +55,6 @@ CHECK_DEPS:
 
 clean:
 	rm -f $(TARGETS) *.o *.cl
+	rm -rf output assets
 
 .PHONY: CHECK_DEPS clean

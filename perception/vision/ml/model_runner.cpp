@@ -5,13 +5,16 @@
 #include <cstdint>
 #include <cstdio>
 
+
 namespace cooboc {
 namespace perception {
 namespace vision {
 namespace ml {
 
 
-void run(std::array<std::uint8_t, 12 * 128 * 256> images, std::array<std::uint8_t, 12 * 128 * 256> bigImages) {
+void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
+         const std::array<std::uint8_t, 12 * 128 * 256>& bigImages,
+         std::array<float, 632U>& output) {
     // Load model
     armnnTfLiteParser::ITfLiteParserPtr parser = armnnTfLiteParser::ITfLiteParser::Create();
     armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile("models/onnx2py_fp32_float32.tflite");
@@ -88,20 +91,15 @@ void run(std::array<std::uint8_t, 12 * 128 * 256> images, std::array<std::uint8_
       {bigInputImgsBinding.first, armnn::ConstTensor(bigInputImgsBinding.second, inputImgsBuffer)},
     };
 
-    float outputBuffer[1U * 632U];
+    // float outputBuffer[1U * 632U];
     armnn::BindingPointInfo outputBinding = parser->GetNetworkOutputBindingInfo(0, "Identity");
     armnn::OutputTensors outputTensors {
-      {outputBinding.first, armnn::Tensor(outputBinding.second, outputBuffer)},
+      {outputBinding.first, armnn::Tensor(outputBinding.second, output.data())},
     };
 
 
     // Execute network
     run->EnqueueWorkload(networkIdentifier, inputTensors, outputTensors);
-
-    for (int i = 0; i < 632; ++i) {
-        std::printf("%f ", outputBuffer[i]);
-    }
-    std::printf("\r\n");
 }
 
 }    // namespace ml
