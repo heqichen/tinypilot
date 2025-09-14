@@ -1,0 +1,1075 @@
+42,49d41
+<     metadata_props=[
+<         key: "output_slices"
+<         value: "gASVxQAAAAAAAAB9lCiMBG1ldGGUjAhidWlsdGluc5SMBXNsaWNllJOUSwBLN06HlFKUjAtkZXNp\ncmVfcHJlZJRoBEs3S1dOh5RSlIwEcG9zZZRoBEtXS2NOh5RSlIwWd2lkZV9mcm9tX2RldmljZV9l\ndWxlcpRoBEtjS2lOh5RSlIwOcm9hZF90cmFuc2Zvcm2UaARLaUt1ToeUUpSMDGhpZGRlbl9zdGF0\nZZRoBEt1Sv3///9Oh5RSlIwDcGFklGgESv3///9OToeUUpR1Lg==\n"
+<         ,
+<         key: "model_checkpoint"
+<         value: "817b824f-1179-4ede-8f36-ff1020c1b7cb/500"
+<         ,
+<     ],
+53c45
+<         outputs=[helper.make_tensor_value_info('outputs', TensorProto.FLOAT16, shape=[1, 632])],
+---
+>         outputs=[helper.make_tensor_value_info('outputs', TensorProto.FLOAT, shape=[1, 632])],
+55c47
+<             numpy_helper.from_array(np.array([[0.0, 0.0, 0.0]], dtype='float16'), name='pad'),
+---
+>             numpy_helper.from_array(np.array([[0.0, 0.0, 0.0]], dtype='float32'), name='pad'),
+57c49
+<                 np.load(os.path.join(DATA_DIR, 'const0_vision_model.vision._en.stem.0.reparam_conv.weight.npy')).astype('float16').reshape([64, 24, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const0_vision_model.vision._en.stem.0.reparam_conv.weight.npy')).astype('float32').reshape([64, 24, 3, 3]),
+61c53
+<                 np.load(os.path.join(DATA_DIR, 'const1_vision_model.vision._en.stem.0.reparam_conv.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const1_vision_model.vision._en.stem.0.reparam_conv.bias.npy')).astype('float32').reshape([64]),
+65c57
+<                 np.load(os.path.join(DATA_DIR, 'const2_vision_model.vision._en.stem.1.reparam_conv.weight.npy')).astype('float16').reshape([64, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const2_vision_model.vision._en.stem.1.reparam_conv.weight.npy')).astype('float32').reshape([64, 1, 3, 3]),
+69c61
+<                 np.load(os.path.join(DATA_DIR, 'const3_vision_model.vision._en.stem.1.reparam_conv.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const3_vision_model.vision._en.stem.1.reparam_conv.bias.npy')).astype('float32').reshape([64]),
+73c65
+<                 np.load(os.path.join(DATA_DIR, 'const4_vision_model.vision._en.stem.2.reparam_conv.weight.npy')).astype('float16').reshape([64, 64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const4_vision_model.vision._en.stem.2.reparam_conv.weight.npy')).astype('float32').reshape([64, 64, 1, 1]),
+77c69
+<                 np.load(os.path.join(DATA_DIR, 'const5_vision_model.vision._en.stem.2.reparam_conv.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const5_vision_model.vision._en.stem.2.reparam_conv.bias.npy')).astype('float32').reshape([64]),
+81c73
+<                 np.load(os.path.join(DATA_DIR, 'const6_vision_model.vision._en.stages.0.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([64, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const6_vision_model.vision._en.stages.0.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([64, 1, 3, 3]),
+85c77
+<                 np.load(os.path.join(DATA_DIR, 'const7_vision_model.vision._en.stages.0.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const7_vision_model.vision._en.stages.0.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([64]),
+89c81
+<                 np.load(os.path.join(DATA_DIR, 'const8_vision_model.vision._en.stages.0.blocks.0.mlp.fc1.weight.npy')).astype('float16').reshape([192, 64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const8_vision_model.vision._en.stages.0.blocks.0.mlp.fc1.weight.npy')).astype('float32').reshape([192, 64, 1, 1]),
+93c85
+<                 np.load(os.path.join(DATA_DIR, 'const9_vision_model.vision._en.stages.0.blocks.0.mlp.fc1.bias.npy')).astype('float16').reshape([192]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const9_vision_model.vision._en.stages.0.blocks.0.mlp.fc1.bias.npy')).astype('float32').reshape([192]),
+97c89
+<                 np.load(os.path.join(DATA_DIR, 'const10_vision_model.vision._en.stages.0.blocks.0.mlp.fc2.weight.npy')).astype('float16').reshape([64, 192, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const10_vision_model.vision._en.stages.0.blocks.0.mlp.fc2.weight.npy')).astype('float32').reshape([64, 192, 1, 1]),
+101c93
+<                 np.load(os.path.join(DATA_DIR, 'const11_vision_model.vision._en.stages.0.blocks.0.mlp.fc2.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const11_vision_model.vision._en.stages.0.blocks.0.mlp.fc2.bias.npy')).astype('float32').reshape([64]),
+105c97
+<                 np.load(os.path.join(DATA_DIR, 'const12_vision_model.vision._en.stages.0.blocks.0.layer_scale.gamma.npy')).astype('float16').reshape([64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const12_vision_model.vision._en.stages.0.blocks.0.layer_scale.gamma.npy')).astype('float32').reshape([64, 1, 1]),
+109c101
+<                 np.load(os.path.join(DATA_DIR, 'const13_vision_model.vision._en.stages.0.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([64, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const13_vision_model.vision._en.stages.0.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([64, 1, 3, 3]),
+113c105
+<                 np.load(os.path.join(DATA_DIR, 'const14_vision_model.vision._en.stages.0.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const14_vision_model.vision._en.stages.0.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([64]),
+117c109
+<                 np.load(os.path.join(DATA_DIR, 'const15_vision_model.vision._en.stages.0.blocks.1.mlp.fc1.weight.npy')).astype('float16').reshape([192, 64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const15_vision_model.vision._en.stages.0.blocks.1.mlp.fc1.weight.npy')).astype('float32').reshape([192, 64, 1, 1]),
+121c113
+<                 np.load(os.path.join(DATA_DIR, 'const16_vision_model.vision._en.stages.0.blocks.1.mlp.fc1.bias.npy')).astype('float16').reshape([192]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const16_vision_model.vision._en.stages.0.blocks.1.mlp.fc1.bias.npy')).astype('float32').reshape([192]),
+125c117
+<                 np.load(os.path.join(DATA_DIR, 'const17_vision_model.vision._en.stages.0.blocks.1.mlp.fc2.weight.npy')).astype('float16').reshape([64, 192, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const17_vision_model.vision._en.stages.0.blocks.1.mlp.fc2.weight.npy')).astype('float32').reshape([64, 192, 1, 1]),
+129c121
+<                 np.load(os.path.join(DATA_DIR, 'const18_vision_model.vision._en.stages.0.blocks.1.mlp.fc2.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const18_vision_model.vision._en.stages.0.blocks.1.mlp.fc2.bias.npy')).astype('float32').reshape([64]),
+133c125
+<                 np.load(os.path.join(DATA_DIR, 'const19_vision_model.vision._en.stages.0.blocks.1.layer_scale.gamma.npy')).astype('float16').reshape([64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const19_vision_model.vision._en.stages.0.blocks.1.layer_scale.gamma.npy')).astype('float32').reshape([64, 1, 1]),
+137c129
+<                 np.load(os.path.join(DATA_DIR, 'const20_vision_model.vision._en.stages.1.downsample.proj.0.reparam_conv.weight.npy')).astype('float16').reshape([128, 1, 7, 7]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const20_vision_model.vision._en.stages.1.downsample.proj.0.reparam_conv.weight.npy')).astype('float32').reshape([128, 1, 7, 7]),
+141c133
+<                 np.load(os.path.join(DATA_DIR, 'const21_vision_model.vision._en.stages.1.downsample.proj.0.reparam_conv.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const21_vision_model.vision._en.stages.1.downsample.proj.0.reparam_conv.bias.npy')).astype('float32').reshape([128]),
+145c137
+<                 np.load(os.path.join(DATA_DIR, 'const22_vision_model.vision._en.stages.1.downsample.proj.1.reparam_conv.weight.npy')).astype('float16').reshape([128, 128, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const22_vision_model.vision._en.stages.1.downsample.proj.1.reparam_conv.weight.npy')).astype('float32').reshape([128, 128, 1, 1]),
+149c141
+<                 np.load(os.path.join(DATA_DIR, 'const23_vision_model.vision._en.stages.1.downsample.proj.1.reparam_conv.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const23_vision_model.vision._en.stages.1.downsample.proj.1.reparam_conv.bias.npy')).astype('float32').reshape([128]),
+153c145
+<                 np.load(os.path.join(DATA_DIR, 'const24_vision_model.vision._en.stages.1.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([128, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const24_vision_model.vision._en.stages.1.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([128, 1, 3, 3]),
+157c149
+<                 np.load(os.path.join(DATA_DIR, 'const25_vision_model.vision._en.stages.1.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const25_vision_model.vision._en.stages.1.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([128]),
+161c153
+<                 np.load(os.path.join(DATA_DIR, 'const26_vision_model.vision._en.stages.1.blocks.0.mlp.fc1.weight.npy')).astype('float16').reshape([384, 128, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const26_vision_model.vision._en.stages.1.blocks.0.mlp.fc1.weight.npy')).astype('float32').reshape([384, 128, 1, 1]),
+165c157
+<                 np.load(os.path.join(DATA_DIR, 'const27_vision_model.vision._en.stages.1.blocks.0.mlp.fc1.bias.npy')).astype('float16').reshape([384]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const27_vision_model.vision._en.stages.1.blocks.0.mlp.fc1.bias.npy')).astype('float32').reshape([384]),
+169c161
+<                 np.load(os.path.join(DATA_DIR, 'const28_vision_model.vision._en.stages.1.blocks.0.mlp.fc2.weight.npy')).astype('float16').reshape([128, 384, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const28_vision_model.vision._en.stages.1.blocks.0.mlp.fc2.weight.npy')).astype('float32').reshape([128, 384, 1, 1]),
+173c165
+<                 np.load(os.path.join(DATA_DIR, 'const29_vision_model.vision._en.stages.1.blocks.0.mlp.fc2.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const29_vision_model.vision._en.stages.1.blocks.0.mlp.fc2.bias.npy')).astype('float32').reshape([128]),
+177c169
+<                 np.load(os.path.join(DATA_DIR, 'const30_vision_model.vision._en.stages.1.blocks.0.layer_scale.gamma.npy')).astype('float16').reshape([128, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const30_vision_model.vision._en.stages.1.blocks.0.layer_scale.gamma.npy')).astype('float32').reshape([128, 1, 1]),
+181c173
+<                 np.load(os.path.join(DATA_DIR, 'const31_vision_model.vision._en.stages.1.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([128, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const31_vision_model.vision._en.stages.1.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([128, 1, 3, 3]),
+185c177
+<                 np.load(os.path.join(DATA_DIR, 'const32_vision_model.vision._en.stages.1.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const32_vision_model.vision._en.stages.1.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([128]),
+189c181
+<                 np.load(os.path.join(DATA_DIR, 'const33_vision_model.vision._en.stages.1.blocks.1.mlp.fc1.weight.npy')).astype('float16').reshape([384, 128, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const33_vision_model.vision._en.stages.1.blocks.1.mlp.fc1.weight.npy')).astype('float32').reshape([384, 128, 1, 1]),
+193c185
+<                 np.load(os.path.join(DATA_DIR, 'const34_vision_model.vision._en.stages.1.blocks.1.mlp.fc1.bias.npy')).astype('float16').reshape([384]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const34_vision_model.vision._en.stages.1.blocks.1.mlp.fc1.bias.npy')).astype('float32').reshape([384]),
+197c189
+<                 np.load(os.path.join(DATA_DIR, 'const35_vision_model.vision._en.stages.1.blocks.1.mlp.fc2.weight.npy')).astype('float16').reshape([128, 384, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const35_vision_model.vision._en.stages.1.blocks.1.mlp.fc2.weight.npy')).astype('float32').reshape([128, 384, 1, 1]),
+201c193
+<                 np.load(os.path.join(DATA_DIR, 'const36_vision_model.vision._en.stages.1.blocks.1.mlp.fc2.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const36_vision_model.vision._en.stages.1.blocks.1.mlp.fc2.bias.npy')).astype('float32').reshape([128]),
+205c197
+<                 np.load(os.path.join(DATA_DIR, 'const37_vision_model.vision._en.stages.1.blocks.1.layer_scale.gamma.npy')).astype('float16').reshape([128, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const37_vision_model.vision._en.stages.1.blocks.1.layer_scale.gamma.npy')).astype('float32').reshape([128, 1, 1]),
+209c201
+<                 np.load(os.path.join(DATA_DIR, 'const38_vision_model.vision._en.stages.2.downsample.proj.0.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 7, 7]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const38_vision_model.vision._en.stages.2.downsample.proj.0.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 7, 7]),
+213c205
+<                 np.load(os.path.join(DATA_DIR, 'const39_vision_model.vision._en.stages.2.downsample.proj.0.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const39_vision_model.vision._en.stages.2.downsample.proj.0.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+217c209
+<                 np.load(os.path.join(DATA_DIR, 'const40_vision_model.vision._en.stages.2.downsample.proj.1.reparam_conv.weight.npy')).astype('float16').reshape([256, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const40_vision_model.vision._en.stages.2.downsample.proj.1.reparam_conv.weight.npy')).astype('float32').reshape([256, 256, 1, 1]),
+221c213
+<                 np.load(os.path.join(DATA_DIR, 'const41_vision_model.vision._en.stages.2.downsample.proj.1.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const41_vision_model.vision._en.stages.2.downsample.proj.1.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+225c217
+<                 np.load(os.path.join(DATA_DIR, 'const42_vision_model.vision._en.stages.2.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const42_vision_model.vision._en.stages.2.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+229c221
+<                 np.load(os.path.join(DATA_DIR, 'const43_vision_model.vision._en.stages.2.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const43_vision_model.vision._en.stages.2.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+233c225
+<                 np.load(os.path.join(DATA_DIR, 'const44_vision_model.vision._en.stages.2.blocks.0.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const44_vision_model.vision._en.stages.2.blocks.0.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+237c229
+<                 np.load(os.path.join(DATA_DIR, 'const45_vision_model.vision._en.stages.2.blocks.0.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const45_vision_model.vision._en.stages.2.blocks.0.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+241c233
+<                 np.load(os.path.join(DATA_DIR, 'const46_vision_model.vision._en.stages.2.blocks.0.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const46_vision_model.vision._en.stages.2.blocks.0.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+245c237
+<                 np.load(os.path.join(DATA_DIR, 'const47_vision_model.vision._en.stages.2.blocks.0.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const47_vision_model.vision._en.stages.2.blocks.0.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+249c241
+<                 np.load(os.path.join(DATA_DIR, 'const48_vision_model.vision._en.stages.2.blocks.0.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const48_vision_model.vision._en.stages.2.blocks.0.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+253c245
+<                 np.load(os.path.join(DATA_DIR, 'const49_vision_model.vision._en.stages.2.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const49_vision_model.vision._en.stages.2.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+257c249
+<                 np.load(os.path.join(DATA_DIR, 'const50_vision_model.vision._en.stages.2.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const50_vision_model.vision._en.stages.2.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+261c253
+<                 np.load(os.path.join(DATA_DIR, 'const51_vision_model.vision._en.stages.2.blocks.1.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const51_vision_model.vision._en.stages.2.blocks.1.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+265c257
+<                 np.load(os.path.join(DATA_DIR, 'const52_vision_model.vision._en.stages.2.blocks.1.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const52_vision_model.vision._en.stages.2.blocks.1.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+269c261
+<                 np.load(os.path.join(DATA_DIR, 'const53_vision_model.vision._en.stages.2.blocks.1.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const53_vision_model.vision._en.stages.2.blocks.1.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+273c265
+<                 np.load(os.path.join(DATA_DIR, 'const54_vision_model.vision._en.stages.2.blocks.1.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const54_vision_model.vision._en.stages.2.blocks.1.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+277c269
+<                 np.load(os.path.join(DATA_DIR, 'const55_vision_model.vision._en.stages.2.blocks.1.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const55_vision_model.vision._en.stages.2.blocks.1.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+281c273
+<                 np.load(os.path.join(DATA_DIR, 'const56_vision_model.vision._en.stages.2.blocks.2.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const56_vision_model.vision._en.stages.2.blocks.2.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+285c277
+<                 np.load(os.path.join(DATA_DIR, 'const57_vision_model.vision._en.stages.2.blocks.2.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const57_vision_model.vision._en.stages.2.blocks.2.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+289c281
+<                 np.load(os.path.join(DATA_DIR, 'const58_vision_model.vision._en.stages.2.blocks.2.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const58_vision_model.vision._en.stages.2.blocks.2.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+293c285
+<                 np.load(os.path.join(DATA_DIR, 'const59_vision_model.vision._en.stages.2.blocks.2.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const59_vision_model.vision._en.stages.2.blocks.2.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+297c289
+<                 np.load(os.path.join(DATA_DIR, 'const60_vision_model.vision._en.stages.2.blocks.2.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const60_vision_model.vision._en.stages.2.blocks.2.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+301c293
+<                 np.load(os.path.join(DATA_DIR, 'const61_vision_model.vision._en.stages.2.blocks.2.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const61_vision_model.vision._en.stages.2.blocks.2.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+305c297
+<                 np.load(os.path.join(DATA_DIR, 'const62_vision_model.vision._en.stages.2.blocks.2.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const62_vision_model.vision._en.stages.2.blocks.2.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+309c301
+<                 np.load(os.path.join(DATA_DIR, 'const63_vision_model.vision._en.stages.2.blocks.3.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const63_vision_model.vision._en.stages.2.blocks.3.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+313c305
+<                 np.load(os.path.join(DATA_DIR, 'const64_vision_model.vision._en.stages.2.blocks.3.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const64_vision_model.vision._en.stages.2.blocks.3.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+317c309
+<                 np.load(os.path.join(DATA_DIR, 'const65_vision_model.vision._en.stages.2.blocks.3.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const65_vision_model.vision._en.stages.2.blocks.3.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+321c313
+<                 np.load(os.path.join(DATA_DIR, 'const66_vision_model.vision._en.stages.2.blocks.3.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const66_vision_model.vision._en.stages.2.blocks.3.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+325c317
+<                 np.load(os.path.join(DATA_DIR, 'const67_vision_model.vision._en.stages.2.blocks.3.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const67_vision_model.vision._en.stages.2.blocks.3.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+329c321
+<                 np.load(os.path.join(DATA_DIR, 'const68_vision_model.vision._en.stages.2.blocks.3.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const68_vision_model.vision._en.stages.2.blocks.3.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+333c325
+<                 np.load(os.path.join(DATA_DIR, 'const69_vision_model.vision._en.stages.2.blocks.3.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const69_vision_model.vision._en.stages.2.blocks.3.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+337c329
+<                 np.load(os.path.join(DATA_DIR, 'const70_vision_model.vision._en.stages.2.blocks.4.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const70_vision_model.vision._en.stages.2.blocks.4.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+341c333
+<                 np.load(os.path.join(DATA_DIR, 'const71_vision_model.vision._en.stages.2.blocks.4.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const71_vision_model.vision._en.stages.2.blocks.4.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+345c337
+<                 np.load(os.path.join(DATA_DIR, 'const72_vision_model.vision._en.stages.2.blocks.4.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const72_vision_model.vision._en.stages.2.blocks.4.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+349c341
+<                 np.load(os.path.join(DATA_DIR, 'const73_vision_model.vision._en.stages.2.blocks.4.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const73_vision_model.vision._en.stages.2.blocks.4.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+353c345
+<                 np.load(os.path.join(DATA_DIR, 'const74_vision_model.vision._en.stages.2.blocks.4.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const74_vision_model.vision._en.stages.2.blocks.4.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+357c349
+<                 np.load(os.path.join(DATA_DIR, 'const75_vision_model.vision._en.stages.2.blocks.4.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const75_vision_model.vision._en.stages.2.blocks.4.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+361c353
+<                 np.load(os.path.join(DATA_DIR, 'const76_vision_model.vision._en.stages.2.blocks.4.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const76_vision_model.vision._en.stages.2.blocks.4.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+365c357
+<                 np.load(os.path.join(DATA_DIR, 'const77_vision_model.vision._en.stages.2.blocks.5.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([256, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const77_vision_model.vision._en.stages.2.blocks.5.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([256, 1, 3, 3]),
+369c361
+<                 np.load(os.path.join(DATA_DIR, 'const78_vision_model.vision._en.stages.2.blocks.5.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const78_vision_model.vision._en.stages.2.blocks.5.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([256]),
+373c365
+<                 np.load(os.path.join(DATA_DIR, 'const79_vision_model.vision._en.stages.2.blocks.5.mlp.fc1.weight.npy')).astype('float16').reshape([768, 256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const79_vision_model.vision._en.stages.2.blocks.5.mlp.fc1.weight.npy')).astype('float32').reshape([768, 256, 1, 1]),
+377c369
+<                 np.load(os.path.join(DATA_DIR, 'const80_vision_model.vision._en.stages.2.blocks.5.mlp.fc1.bias.npy')).astype('float16').reshape([768]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const80_vision_model.vision._en.stages.2.blocks.5.mlp.fc1.bias.npy')).astype('float32').reshape([768]),
+381c373
+<                 np.load(os.path.join(DATA_DIR, 'const81_vision_model.vision._en.stages.2.blocks.5.mlp.fc2.weight.npy')).astype('float16').reshape([256, 768, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const81_vision_model.vision._en.stages.2.blocks.5.mlp.fc2.weight.npy')).astype('float32').reshape([256, 768, 1, 1]),
+385c377
+<                 np.load(os.path.join(DATA_DIR, 'const82_vision_model.vision._en.stages.2.blocks.5.mlp.fc2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const82_vision_model.vision._en.stages.2.blocks.5.mlp.fc2.bias.npy')).astype('float32').reshape([256]),
+389c381
+<                 np.load(os.path.join(DATA_DIR, 'const83_vision_model.vision._en.stages.2.blocks.5.layer_scale.gamma.npy')).astype('float16').reshape([256, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const83_vision_model.vision._en.stages.2.blocks.5.layer_scale.gamma.npy')).astype('float32').reshape([256, 1, 1]),
+393c385
+<                 np.load(os.path.join(DATA_DIR, 'const84_vision_model.vision._en.stages.3.downsample.proj.0.reparam_conv.weight.npy')).astype('float16').reshape([512, 1, 7, 7]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const84_vision_model.vision._en.stages.3.downsample.proj.0.reparam_conv.weight.npy')).astype('float32').reshape([512, 1, 7, 7]),
+397c389
+<                 np.load(os.path.join(DATA_DIR, 'const85_vision_model.vision._en.stages.3.downsample.proj.0.reparam_conv.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const85_vision_model.vision._en.stages.3.downsample.proj.0.reparam_conv.bias.npy')).astype('float32').reshape([512]),
+401c393
+<                 np.load(os.path.join(DATA_DIR, 'const86_vision_model.vision._en.stages.3.downsample.proj.1.reparam_conv.weight.npy')).astype('float16').reshape([512, 512, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const86_vision_model.vision._en.stages.3.downsample.proj.1.reparam_conv.weight.npy')).astype('float32').reshape([512, 512, 1, 1]),
+405c397
+<                 np.load(os.path.join(DATA_DIR, 'const87_vision_model.vision._en.stages.3.downsample.proj.1.reparam_conv.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const87_vision_model.vision._en.stages.3.downsample.proj.1.reparam_conv.bias.npy')).astype('float32').reshape([512]),
+409c401
+<                 np.load(os.path.join(DATA_DIR, 'const88_vision_model.vision._en.stages.3.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([512, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const88_vision_model.vision._en.stages.3.blocks.0.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([512, 1, 3, 3]),
+413c405
+<                 np.load(os.path.join(DATA_DIR, 'const89_vision_model.vision._en.stages.3.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const89_vision_model.vision._en.stages.3.blocks.0.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([512]),
+417c409
+<                 np.load(os.path.join(DATA_DIR, 'const90_vision_model.vision._en.stages.3.blocks.0.mlp.fc1.weight.npy')).astype('float16').reshape([1536, 512, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const90_vision_model.vision._en.stages.3.blocks.0.mlp.fc1.weight.npy')).astype('float32').reshape([1536, 512, 1, 1]),
+421c413
+<                 np.load(os.path.join(DATA_DIR, 'const91_vision_model.vision._en.stages.3.blocks.0.mlp.fc1.bias.npy')).astype('float16').reshape([1536]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const91_vision_model.vision._en.stages.3.blocks.0.mlp.fc1.bias.npy')).astype('float32').reshape([1536]),
+425c417
+<                 np.load(os.path.join(DATA_DIR, 'const92_vision_model.vision._en.stages.3.blocks.0.mlp.fc2.weight.npy')).astype('float16').reshape([512, 1536, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const92_vision_model.vision._en.stages.3.blocks.0.mlp.fc2.weight.npy')).astype('float32').reshape([512, 1536, 1, 1]),
+429c421
+<                 np.load(os.path.join(DATA_DIR, 'const93_vision_model.vision._en.stages.3.blocks.0.mlp.fc2.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const93_vision_model.vision._en.stages.3.blocks.0.mlp.fc2.bias.npy')).astype('float32').reshape([512]),
+433c425
+<                 np.load(os.path.join(DATA_DIR, 'const94_vision_model.vision._en.stages.3.blocks.0.layer_scale.gamma.npy')).astype('float16').reshape([512, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const94_vision_model.vision._en.stages.3.blocks.0.layer_scale.gamma.npy')).astype('float32').reshape([512, 1, 1]),
+437c429
+<                 np.load(os.path.join(DATA_DIR, 'const95_vision_model.vision._en.stages.3.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float16').reshape([512, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const95_vision_model.vision._en.stages.3.blocks.1.token_mixer.reparam_conv.weight.npy')).astype('float32').reshape([512, 1, 3, 3]),
+441c433
+<                 np.load(os.path.join(DATA_DIR, 'const96_vision_model.vision._en.stages.3.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const96_vision_model.vision._en.stages.3.blocks.1.token_mixer.reparam_conv.bias.npy')).astype('float32').reshape([512]),
+445c437
+<                 np.load(os.path.join(DATA_DIR, 'const97_vision_model.vision._en.stages.3.blocks.1.mlp.fc1.weight.npy')).astype('float16').reshape([1536, 512, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const97_vision_model.vision._en.stages.3.blocks.1.mlp.fc1.weight.npy')).astype('float32').reshape([1536, 512, 1, 1]),
+449c441
+<                 np.load(os.path.join(DATA_DIR, 'const98_vision_model.vision._en.stages.3.blocks.1.mlp.fc1.bias.npy')).astype('float16').reshape([1536]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const98_vision_model.vision._en.stages.3.blocks.1.mlp.fc1.bias.npy')).astype('float32').reshape([1536]),
+453c445
+<                 np.load(os.path.join(DATA_DIR, 'const99_vision_model.vision._en.stages.3.blocks.1.mlp.fc2.weight.npy')).astype('float16').reshape([512, 1536, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const99_vision_model.vision._en.stages.3.blocks.1.mlp.fc2.weight.npy')).astype('float32').reshape([512, 1536, 1, 1]),
+457c449
+<                 np.load(os.path.join(DATA_DIR, 'const100_vision_model.vision._en.stages.3.blocks.1.mlp.fc2.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const100_vision_model.vision._en.stages.3.blocks.1.mlp.fc2.bias.npy')).astype('float32').reshape([512]),
+461c453
+<                 np.load(os.path.join(DATA_DIR, 'const101_vision_model.vision._en.stages.3.blocks.1.layer_scale.gamma.npy')).astype('float16').reshape([512, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const101_vision_model.vision._en.stages.3.blocks.1.layer_scale.gamma.npy')).astype('float32').reshape([512, 1, 1]),
+465c457
+<                 np.load(os.path.join(DATA_DIR, 'const102_vision_model.vision._en.final_conv.se.fc1.weight.npy')).astype('float16').reshape([64, 1024, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const102_vision_model.vision._en.final_conv.se.fc1.weight.npy')).astype('float32').reshape([64, 1024, 1, 1]),
+469c461
+<                 np.load(os.path.join(DATA_DIR, 'const103_vision_model.vision._en.final_conv.se.fc1.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const103_vision_model.vision._en.final_conv.se.fc1.bias.npy')).astype('float32').reshape([64]),
+473c465
+<                 np.load(os.path.join(DATA_DIR, 'const104_vision_model.vision._en.final_conv.se.fc2.weight.npy')).astype('float16').reshape([1024, 64, 1, 1]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const104_vision_model.vision._en.final_conv.se.fc2.weight.npy')).astype('float32').reshape([1024, 64, 1, 1]),
+477c469
+<                 np.load(os.path.join(DATA_DIR, 'const105_vision_model.vision._en.final_conv.se.fc2.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const105_vision_model.vision._en.final_conv.se.fc2.bias.npy')).astype('float32').reshape([1024]),
+481c473
+<                 np.load(os.path.join(DATA_DIR, 'const106_vision_model.vision._en.final_conv.reparam_conv.weight.npy')).astype('float16').reshape([1024, 1, 3, 3]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const106_vision_model.vision._en.final_conv.reparam_conv.weight.npy')).astype('float32').reshape([1024, 1, 3, 3]),
+485c477
+<                 np.load(os.path.join(DATA_DIR, 'const107_vision_model.vision._en.final_conv.reparam_conv.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const107_vision_model.vision._en.final_conv.reparam_conv.bias.npy')).astype('float32').reshape([1024]),
+488,489c480,481
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const108_vision_model.vision._en.head.fc.weight.npy')).astype('float16').reshape([2048, 1024]), name='vision_model.vision._en.head.fc.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const109_vision_model.vision._en.head.fc.bias.npy')).astype('float16').reshape([2048]), name='vision_model.vision._en.head.fc.bias'),
+---
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const108_vision_model.vision._en.head.fc.weight.npy')).astype('float32').reshape([2048, 1024]), name='vision_model.vision._en.head.fc.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const109_vision_model.vision._en.head.fc.bias.npy')).astype('float32').reshape([2048]), name='vision_model.vision._en.head.fc.bias'),
+491c483
+<                 np.load(os.path.join(DATA_DIR, 'const110_vision_model.no_bottleneck_policy.summarizer._infeats.0.weight.npy')).astype('float16').reshape([512, 2048]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const110_vision_model.no_bottleneck_policy.summarizer._infeats.0.weight.npy')).astype('float32').reshape([512, 2048]),
+495c487
+<                 np.load(os.path.join(DATA_DIR, 'const111_vision_model.no_bottleneck_policy.summarizer._infeats.0.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const111_vision_model.no_bottleneck_policy.summarizer._infeats.0.bias.npy')).astype('float32').reshape([512]),
+499c491
+<                 np.load(os.path.join(DATA_DIR, 'const112_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.0.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const112_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.0.weight.npy')).astype('float32').reshape([1024, 512]),
+503c495
+<                 np.load(os.path.join(DATA_DIR, 'const113_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.0.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const113_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.0.bias.npy')).astype('float32').reshape([1024]),
+507c499
+<                 np.load(os.path.join(DATA_DIR, 'const114_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.3.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const114_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.3.weight.npy')).astype('float32').reshape([512, 1024]),
+511c503
+<                 np.load(os.path.join(DATA_DIR, 'const115_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.3.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const115_vision_model.no_bottleneck_policy.summarizer.resblock.block_a.3.bias.npy')).astype('float32').reshape([512]),
+515c507
+<                 np.load(os.path.join(DATA_DIR, 'const116_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.1.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const116_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.1.weight.npy')).astype('float32').reshape([1024, 512]),
+519c511
+<                 np.load(os.path.join(DATA_DIR, 'const117_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.1.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const117_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.1.bias.npy')).astype('float32').reshape([1024]),
+523c515
+<                 np.load(os.path.join(DATA_DIR, 'const118_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.4.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const118_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.4.weight.npy')).astype('float32').reshape([512, 1024]),
+527c519
+<                 np.load(os.path.join(DATA_DIR, 'const119_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.4.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const119_vision_model.no_bottleneck_policy.summarizer.resblock.block_b.4.bias.npy')).astype('float32').reshape([512]),
+531c523
+<                 np.load(os.path.join(DATA_DIR, 'const120_vision_model.no_bottleneck_policy.hydra.resblock.block_a.0.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const120_vision_model.no_bottleneck_policy.hydra.resblock.block_a.0.weight.npy')).astype('float32').reshape([1024, 512]),
+535c527
+<                 np.load(os.path.join(DATA_DIR, 'const121_vision_model.no_bottleneck_policy.hydra.resblock.block_a.0.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const121_vision_model.no_bottleneck_policy.hydra.resblock.block_a.0.bias.npy')).astype('float32').reshape([1024]),
+539c531
+<                 np.load(os.path.join(DATA_DIR, 'const122_vision_model.no_bottleneck_policy.hydra.resblock.block_a.3.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const122_vision_model.no_bottleneck_policy.hydra.resblock.block_a.3.weight.npy')).astype('float32').reshape([512, 1024]),
+543c535
+<                 np.load(os.path.join(DATA_DIR, 'const123_vision_model.no_bottleneck_policy.hydra.resblock.block_a.3.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const123_vision_model.no_bottleneck_policy.hydra.resblock.block_a.3.bias.npy')).astype('float32').reshape([512]),
+547c539
+<                 np.load(os.path.join(DATA_DIR, 'const124_vision_model.no_bottleneck_policy.hydra.resblock.block_b.1.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const124_vision_model.no_bottleneck_policy.hydra.resblock.block_b.1.weight.npy')).astype('float32').reshape([1024, 512]),
+551c543
+<                 np.load(os.path.join(DATA_DIR, 'const125_vision_model.no_bottleneck_policy.hydra.resblock.block_b.1.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const125_vision_model.no_bottleneck_policy.hydra.resblock.block_b.1.bias.npy')).astype('float32').reshape([1024]),
+555c547
+<                 np.load(os.path.join(DATA_DIR, 'const126_vision_model.no_bottleneck_policy.hydra.resblock.block_b.4.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const126_vision_model.no_bottleneck_policy.hydra.resblock.block_b.4.weight.npy')).astype('float32').reshape([512, 1024]),
+559c551
+<                 np.load(os.path.join(DATA_DIR, 'const127_vision_model.no_bottleneck_policy.hydra.resblock.block_b.4.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const127_vision_model.no_bottleneck_policy.hydra.resblock.block_b.4.bias.npy')).astype('float32').reshape([512]),
+563c555
+<                 np.load(os.path.join(DATA_DIR, 'const128_vision_model.no_bottleneck_policy.hydra.in_layer.meta.weight.npy')).astype('float16').reshape([64, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const128_vision_model.no_bottleneck_policy.hydra.in_layer.meta.weight.npy')).astype('float32').reshape([64, 512]),
+567c559
+<                 np.load(os.path.join(DATA_DIR, 'const129_vision_model.no_bottleneck_policy.hydra.in_layer.meta.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const129_vision_model.no_bottleneck_policy.hydra.in_layer.meta.bias.npy')).astype('float32').reshape([64]),
+571c563
+<                 np.load(os.path.join(DATA_DIR, 'const130_vision_model.no_bottleneck_policy.hydra.in_layer.desire_pred.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const130_vision_model.no_bottleneck_policy.hydra.in_layer.desire_pred.weight.npy')).astype('float32').reshape([32, 512]),
+575c567
+<                 np.load(os.path.join(DATA_DIR, 'const131_vision_model.no_bottleneck_policy.hydra.in_layer.desire_pred.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const131_vision_model.no_bottleneck_policy.hydra.in_layer.desire_pred.bias.npy')).astype('float32').reshape([32]),
+579c571
+<                 np.load(os.path.join(DATA_DIR, 'const132_vision_model.no_bottleneck_policy.hydra.in_layer.road_transform.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const132_vision_model.no_bottleneck_policy.hydra.in_layer.road_transform.weight.npy')).astype('float32').reshape([32, 512]),
+583c575
+<                 np.load(os.path.join(DATA_DIR, 'const133_vision_model.no_bottleneck_policy.hydra.in_layer.road_transform.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const133_vision_model.no_bottleneck_policy.hydra.in_layer.road_transform.bias.npy')).astype('float32').reshape([32]),
+587c579
+<                 np.load(os.path.join(DATA_DIR, 'const134_vision_model.no_bottleneck_policy.hydra.in_layer.pose.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const134_vision_model.no_bottleneck_policy.hydra.in_layer.pose.weight.npy')).astype('float32').reshape([32, 512]),
+591c583
+<                 np.load(os.path.join(DATA_DIR, 'const135_vision_model.no_bottleneck_policy.hydra.in_layer.pose.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const135_vision_model.no_bottleneck_policy.hydra.in_layer.pose.bias.npy')).astype('float32').reshape([32]),
+595c587
+<                 np.load(os.path.join(DATA_DIR, 'const136_vision_model.no_bottleneck_policy.hydra.in_layer.wide_from_device_euler.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const136_vision_model.no_bottleneck_policy.hydra.in_layer.wide_from_device_euler.weight.npy')).astype('float32').reshape([32, 512]),
+599c591
+<                 np.load(os.path.join(DATA_DIR, 'const137_vision_model.no_bottleneck_policy.hydra.in_layer.wide_from_device_euler.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const137_vision_model.no_bottleneck_policy.hydra.in_layer.wide_from_device_euler.bias.npy')).astype('float32').reshape([32]),
+603c595
+<                 np.load(os.path.join(DATA_DIR, 'const138_vision_model.no_bottleneck_policy.hydra.res_layer.meta.0.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const138_vision_model.no_bottleneck_policy.hydra.res_layer.meta.0.weight.npy')).astype('float32').reshape([64, 64]),
+607c599
+<                 np.load(os.path.join(DATA_DIR, 'const139_vision_model.no_bottleneck_policy.hydra.res_layer.meta.0.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const139_vision_model.no_bottleneck_policy.hydra.res_layer.meta.0.bias.npy')).astype('float32').reshape([64]),
+611c603
+<                 np.load(os.path.join(DATA_DIR, 'const140_vision_model.no_bottleneck_policy.hydra.res_layer.meta.2.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const140_vision_model.no_bottleneck_policy.hydra.res_layer.meta.2.weight.npy')).astype('float32').reshape([64, 64]),
+615c607
+<                 np.load(os.path.join(DATA_DIR, 'const141_vision_model.no_bottleneck_policy.hydra.res_layer.meta.2.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const141_vision_model.no_bottleneck_policy.hydra.res_layer.meta.2.bias.npy')).astype('float32').reshape([64]),
+619c611
+<                 np.load(os.path.join(DATA_DIR, 'const142_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const142_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.0.weight.npy')).astype('float32').reshape([32, 32]),
+623c615
+<                 np.load(os.path.join(DATA_DIR, 'const143_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const143_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.0.bias.npy')).astype('float32').reshape([32]),
+627c619
+<                 np.load(os.path.join(DATA_DIR, 'const144_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const144_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.2.weight.npy')).astype('float32').reshape([32, 32]),
+631c623
+<                 np.load(os.path.join(DATA_DIR, 'const145_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const145_vision_model.no_bottleneck_policy.hydra.res_layer.desire_pred.2.bias.npy')).astype('float32').reshape([32]),
+635c627
+<                 np.load(os.path.join(DATA_DIR, 'const146_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const146_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.0.weight.npy')).astype('float32').reshape([32, 32]),
+639c631
+<                 np.load(os.path.join(DATA_DIR, 'const147_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const147_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.0.bias.npy')).astype('float32').reshape([32]),
+643c635
+<                 np.load(os.path.join(DATA_DIR, 'const148_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const148_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.2.weight.npy')).astype('float32').reshape([32, 32]),
+647c639
+<                 np.load(os.path.join(DATA_DIR, 'const149_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const149_vision_model.no_bottleneck_policy.hydra.res_layer.road_transform.2.bias.npy')).astype('float32').reshape([32]),
+651c643
+<                 np.load(os.path.join(DATA_DIR, 'const150_vision_model.no_bottleneck_policy.hydra.res_layer.pose.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const150_vision_model.no_bottleneck_policy.hydra.res_layer.pose.0.weight.npy')).astype('float32').reshape([32, 32]),
+655c647
+<                 np.load(os.path.join(DATA_DIR, 'const151_vision_model.no_bottleneck_policy.hydra.res_layer.pose.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const151_vision_model.no_bottleneck_policy.hydra.res_layer.pose.0.bias.npy')).astype('float32').reshape([32]),
+659c651
+<                 np.load(os.path.join(DATA_DIR, 'const152_vision_model.no_bottleneck_policy.hydra.res_layer.pose.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const152_vision_model.no_bottleneck_policy.hydra.res_layer.pose.2.weight.npy')).astype('float32').reshape([32, 32]),
+663c655
+<                 np.load(os.path.join(DATA_DIR, 'const153_vision_model.no_bottleneck_policy.hydra.res_layer.pose.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const153_vision_model.no_bottleneck_policy.hydra.res_layer.pose.2.bias.npy')).astype('float32').reshape([32]),
+667c659
+<                 np.load(os.path.join(DATA_DIR, 'const154_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const154_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.0.weight.npy')).astype('float32').reshape([32, 32]),
+671c663
+<                 np.load(os.path.join(DATA_DIR, 'const155_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const155_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.0.bias.npy')).astype('float32').reshape([32]),
+675c667
+<                 np.load(os.path.join(DATA_DIR, 'const156_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const156_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.2.weight.npy')).astype('float32').reshape([32, 32]),
+679c671
+<                 np.load(os.path.join(DATA_DIR, 'const157_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const157_vision_model.no_bottleneck_policy.hydra.res_layer.wide_from_device_euler.2.bias.npy')).astype('float32').reshape([32]),
+683c675
+<                 np.load(os.path.join(DATA_DIR, 'const158_vision_model.no_bottleneck_policy.hydra.final_layer.meta.weight.npy')).astype('float16').reshape([55, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const158_vision_model.no_bottleneck_policy.hydra.final_layer.meta.weight.npy')).astype('float32').reshape([55, 64]),
+687c679
+<                 np.load(os.path.join(DATA_DIR, 'const159_vision_model.no_bottleneck_policy.hydra.final_layer.meta.bias.npy')).astype('float16').reshape([55]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const159_vision_model.no_bottleneck_policy.hydra.final_layer.meta.bias.npy')).astype('float32').reshape([55]),
+691c683
+<                 np.load(os.path.join(DATA_DIR, 'const160_vision_model.no_bottleneck_policy.hydra.final_layer.desire_pred.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const160_vision_model.no_bottleneck_policy.hydra.final_layer.desire_pred.weight.npy')).astype('float32').reshape([32, 32]),
+695c687
+<                 np.load(os.path.join(DATA_DIR, 'const161_vision_model.no_bottleneck_policy.hydra.final_layer.desire_pred.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const161_vision_model.no_bottleneck_policy.hydra.final_layer.desire_pred.bias.npy')).astype('float32').reshape([32]),
+699c691
+<                 np.load(os.path.join(DATA_DIR, 'const162_vision_model.no_bottleneck_policy.hydra.final_layer.road_transform.weight.npy')).astype('float16').reshape([12, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const162_vision_model.no_bottleneck_policy.hydra.final_layer.road_transform.weight.npy')).astype('float32').reshape([12, 32]),
+703c695
+<                 np.load(os.path.join(DATA_DIR, 'const163_vision_model.no_bottleneck_policy.hydra.final_layer.road_transform.bias.npy')).astype('float16').reshape([12]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const163_vision_model.no_bottleneck_policy.hydra.final_layer.road_transform.bias.npy')).astype('float32').reshape([12]),
+707c699
+<                 np.load(os.path.join(DATA_DIR, 'const164_vision_model.no_bottleneck_policy.hydra.final_layer.pose.weight.npy')).astype('float16').reshape([12, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const164_vision_model.no_bottleneck_policy.hydra.final_layer.pose.weight.npy')).astype('float32').reshape([12, 32]),
+711c703
+<                 np.load(os.path.join(DATA_DIR, 'const165_vision_model.no_bottleneck_policy.hydra.final_layer.pose.bias.npy')).astype('float16').reshape([12]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const165_vision_model.no_bottleneck_policy.hydra.final_layer.pose.bias.npy')).astype('float32').reshape([12]),
+715c707
+<                 np.load(os.path.join(DATA_DIR, 'const166_vision_model.no_bottleneck_policy.hydra.final_layer.wide_from_device_euler.weight.npy')).astype('float16').reshape([6, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const166_vision_model.no_bottleneck_policy.hydra.final_layer.wide_from_device_euler.weight.npy')).astype('float32').reshape([6, 32]),
+719c711
+<                 np.array([-0.0045928955078125, -0.0321044921875, 0.02996826171875, -3.365234375, -3.9921875, -3.5234375], dtype='float16'),
+---
+>                 np.array([-0.0045928955078125, -0.0321044921875, 0.02996826171875, -3.365234375, -3.9921875, -3.5234375], dtype='float32'),
+722,757c714,749
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const167_summarizer._infeats.0.weight.npy')).astype('float16').reshape([512, 2048]), name='summarizer._infeats.0.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const168_summarizer._infeats.0.bias.npy')).astype('float16').reshape([512]), name='summarizer._infeats.0.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const169_summarizer.resblock.block_a.0.weight.npy')).astype('float16').reshape([1024, 512]), name='summarizer.resblock.block_a.0.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const170_summarizer.resblock.block_a.0.bias.npy')).astype('float16').reshape([1024]), name='summarizer.resblock.block_a.0.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const171_summarizer.resblock.block_a.3.weight.npy')).astype('float16').reshape([512, 1024]), name='summarizer.resblock.block_a.3.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const172_summarizer.resblock.block_a.3.bias.npy')).astype('float16').reshape([512]), name='summarizer.resblock.block_a.3.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const173_summarizer.resblock.block_b.1.weight.npy')).astype('float16').reshape([1024, 512]), name='summarizer.resblock.block_b.1.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const174_summarizer.resblock.block_b.1.bias.npy')).astype('float16').reshape([1024]), name='summarizer.resblock.block_b.1.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const175_summarizer.resblock.block_b.4.weight.npy')).astype('float16').reshape([512, 1024]), name='summarizer.resblock.block_b.4.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const176_summarizer.resblock.block_b.4.bias.npy')).astype('float16').reshape([512]), name='summarizer.resblock.block_b.4.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const177_summarizer._mu.weight.npy')).astype('float16').reshape([512, 512]), name='summarizer._mu.weight'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const178_summarizer._mu.bias.npy')).astype('float16').reshape([512]), name='summarizer._mu.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const179_onnx__Conv_772.npy')).astype('float16').reshape([64, 1, 7, 7]), name='onnx::Conv_772'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const180_onnx__Conv_773.npy')).astype('float16').reshape([64]), name='onnx::Conv_773'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const181_onnx__Conv_775.npy')).astype('float16').reshape([64, 1, 7, 7]), name='onnx::Conv_775'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const182_onnx__Conv_776.npy')).astype('float16').reshape([64]), name='onnx::Conv_776'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const183_onnx__Conv_778.npy')).astype('float16').reshape([128, 1, 7, 7]), name='onnx::Conv_778'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const184_onnx__Conv_779.npy')).astype('float16').reshape([128]), name='onnx::Conv_779'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const185_onnx__Conv_781.npy')).astype('float16').reshape([128, 1, 7, 7]), name='onnx::Conv_781'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const186_onnx__Conv_782.npy')).astype('float16').reshape([128]), name='onnx::Conv_782'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const187_onnx__Conv_784.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_784'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const188_onnx__Conv_785.npy')).astype('float16').reshape([256]), name='onnx::Conv_785'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const189_onnx__Conv_787.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_787'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const190_onnx__Conv_788.npy')).astype('float16').reshape([256]), name='onnx::Conv_788'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const191_onnx__Conv_790.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_790'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const192_onnx__Conv_791.npy')).astype('float16').reshape([256]), name='onnx::Conv_791'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const193_onnx__Conv_793.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_793'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const194_onnx__Conv_794.npy')).astype('float16').reshape([256]), name='onnx::Conv_794'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const195_onnx__Conv_796.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_796'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const196_onnx__Conv_797.npy')).astype('float16').reshape([256]), name='onnx::Conv_797'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const197_onnx__Conv_799.npy')).astype('float16').reshape([256, 1, 7, 7]), name='onnx::Conv_799'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const198_onnx__Conv_800.npy')).astype('float16').reshape([256]), name='onnx::Conv_800'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const199_onnx__Conv_802.npy')).astype('float16').reshape([512, 1, 7, 7]), name='onnx::Conv_802'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const200_onnx__Conv_803.npy')).astype('float16').reshape([512]), name='onnx::Conv_803'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const201_onnx__Conv_805.npy')).astype('float16').reshape([512, 1, 7, 7]), name='onnx::Conv_805'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const202_onnx__Conv_806.npy')).astype('float16').reshape([512]), name='onnx::Conv_806'),
+---
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const167_summarizer._infeats.0.weight.npy')).astype('float32').reshape([512, 2048]), name='summarizer._infeats.0.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const168_summarizer._infeats.0.bias.npy')).astype('float32').reshape([512]), name='summarizer._infeats.0.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const169_summarizer.resblock.block_a.0.weight.npy')).astype('float32').reshape([1024, 512]), name='summarizer.resblock.block_a.0.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const170_summarizer.resblock.block_a.0.bias.npy')).astype('float32').reshape([1024]), name='summarizer.resblock.block_a.0.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const171_summarizer.resblock.block_a.3.weight.npy')).astype('float32').reshape([512, 1024]), name='summarizer.resblock.block_a.3.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const172_summarizer.resblock.block_a.3.bias.npy')).astype('float32').reshape([512]), name='summarizer.resblock.block_a.3.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const173_summarizer.resblock.block_b.1.weight.npy')).astype('float32').reshape([1024, 512]), name='summarizer.resblock.block_b.1.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const174_summarizer.resblock.block_b.1.bias.npy')).astype('float32').reshape([1024]), name='summarizer.resblock.block_b.1.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const175_summarizer.resblock.block_b.4.weight.npy')).astype('float32').reshape([512, 1024]), name='summarizer.resblock.block_b.4.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const176_summarizer.resblock.block_b.4.bias.npy')).astype('float32').reshape([512]), name='summarizer.resblock.block_b.4.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const177_summarizer._mu.weight.npy')).astype('float32').reshape([512, 512]), name='summarizer._mu.weight'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const178_summarizer._mu.bias.npy')).astype('float32').reshape([512]), name='summarizer._mu.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const179_onnx__Conv_772.npy')).astype('float32').reshape([64, 1, 7, 7]), name='onnx::Conv_772'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const180_onnx__Conv_773.npy')).astype('float32').reshape([64]), name='onnx::Conv_773'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const181_onnx__Conv_775.npy')).astype('float32').reshape([64, 1, 7, 7]), name='onnx::Conv_775'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const182_onnx__Conv_776.npy')).astype('float32').reshape([64]), name='onnx::Conv_776'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const183_onnx__Conv_778.npy')).astype('float32').reshape([128, 1, 7, 7]), name='onnx::Conv_778'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const184_onnx__Conv_779.npy')).astype('float32').reshape([128]), name='onnx::Conv_779'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const185_onnx__Conv_781.npy')).astype('float32').reshape([128, 1, 7, 7]), name='onnx::Conv_781'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const186_onnx__Conv_782.npy')).astype('float32').reshape([128]), name='onnx::Conv_782'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const187_onnx__Conv_784.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_784'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const188_onnx__Conv_785.npy')).astype('float32').reshape([256]), name='onnx::Conv_785'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const189_onnx__Conv_787.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_787'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const190_onnx__Conv_788.npy')).astype('float32').reshape([256]), name='onnx::Conv_788'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const191_onnx__Conv_790.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_790'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const192_onnx__Conv_791.npy')).astype('float32').reshape([256]), name='onnx::Conv_791'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const193_onnx__Conv_793.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_793'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const194_onnx__Conv_794.npy')).astype('float32').reshape([256]), name='onnx::Conv_794'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const195_onnx__Conv_796.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_796'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const196_onnx__Conv_797.npy')).astype('float32').reshape([256]), name='onnx::Conv_797'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const197_onnx__Conv_799.npy')).astype('float32').reshape([256, 1, 7, 7]), name='onnx::Conv_799'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const198_onnx__Conv_800.npy')).astype('float32').reshape([256]), name='onnx::Conv_800'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const199_onnx__Conv_802.npy')).astype('float32').reshape([512, 1, 7, 7]), name='onnx::Conv_802'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const200_onnx__Conv_803.npy')).astype('float32').reshape([512]), name='onnx::Conv_803'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const201_onnx__Conv_805.npy')).astype('float32').reshape([512, 1, 7, 7]), name='onnx::Conv_805'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const202_onnx__Conv_806.npy')).astype('float32').reshape([512]), name='onnx::Conv_806'),
+760,761c752,753
+<             make_node('Cast', inputs=['input_imgs'], outputs=['/Cast_output_0'], name='/Cast', to=TensorProto.FLOAT16),
+<             make_node('Cast', inputs=['big_input_imgs'], outputs=['/Cast_1_output_0'], name='/Cast_1', to=TensorProto.FLOAT16),
+---
+>             make_node('Cast', inputs=['input_imgs'], outputs=['/Cast_output_0'], name='/Cast', to=TensorProto.FLOAT),
+>             make_node('Cast', inputs=['big_input_imgs'], outputs=['/Cast_1_output_0'], name='/Cast_1', to=TensorProto.FLOAT),
+791c783
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+810c802
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+829c821
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+848c840
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+884c876
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+903c895
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+922c914
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+941c933
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+977c969
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+996c988
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1015c1007
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1034c1026
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1096c1088
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1115c1107
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1134c1126
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1153c1145
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1238c1230
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1257c1249
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1276c1268
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1295c1287
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1373c1365
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1392c1384
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1411c1403
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1430c1422
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1492c1484
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1511c1503
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1530c1522
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1549c1541
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1634c1626
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1653c1645
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1672c1664
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1691c1683
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1769c1761
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1788c1780
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1807c1799
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1826c1818
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+1888c1880
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+1907c1899
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+1926c1918
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+1945c1937
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2030c2022
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2049c2041
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2068c2060
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2087c2079
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2172c2164
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2191c2183
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2210c2202
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2229c2221
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2314c2306
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2333c2325
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2352c2344
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2371c2363
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2456c2448
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2475c2467
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2494c2486
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2513c2505
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2598c2590
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2617c2609
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2636c2628
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2655c2647
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2733c2725
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2752c2744
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2771c2763
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2790c2782
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2852c2844
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+2871c2863
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+2890c2882
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+2909c2901
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+2994c2986
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+3013c3005
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+3032c3024
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+3051c3043
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+3158c3150
+<                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.044708251953125, dtype='float32'), name=''),
+3177c3169
+<                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.7978515625, dtype='float32'), name=''),
+3196c3188
+<                 value=numpy_helper.from_array(np.array(1.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0, dtype='float32'), name=''),
+3215c3207
+<                 value=numpy_helper.from_array(np.array(0.5, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.5, dtype='float32'), name=''),
+3876c3868
+<             make_node('Constant', inputs=[], outputs=['/summarizer/Constant_output_0'], name='/summarizer/Constant', value=numpy_helper.from_array(np.array(0.0, dtype='float16'), name='')),
+---
+>             make_node('Constant', inputs=[], outputs=['/summarizer/Constant_output_0'], name='/summarizer/Constant', value=numpy_helper.from_array(np.array(0.0, dtype='float32'), name='')),
