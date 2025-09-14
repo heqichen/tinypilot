@@ -124,6 +124,11 @@ def _report_convert_model(file_path):
             # disable_model_save=True,
             disable_model_save=False,
             verbosity="error",
+            keep_shape_absolutely_input_names=[
+                "desire",
+                "prev_desired_curv",
+                "features_buffer",
+            ],
         )
         # os.remove(file_path)
         # for tflitepath in glob.glob(f"{_CFG['output_directory']}/*.tflite"):
