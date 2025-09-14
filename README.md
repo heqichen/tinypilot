@@ -10,3 +10,6 @@ intel-opencl-icd // For the cpu runtime for OpenCL , only for testing
 
 Utilities:
 openscad // for generating 3D print model
+
+
+Python: 
