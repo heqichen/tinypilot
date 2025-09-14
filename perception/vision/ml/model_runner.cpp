@@ -11,6 +11,21 @@ namespace perception {
 namespace vision {
 namespace ml {
 
+namespace {
+void reorder(const std::array<std::uint8_t, 12 * 128 * 256>& input,
+             std::array<std::uint8_t, 128U * 256U * 12U>& output) {
+    for (std::size_t i {0U}; i < 12U; ++i) {
+        for (std::size_t j {0U}; j < 128U; ++j) {
+            for (std::size_t k {0U}; k < 256U; ++k) {
+                std::size_t inputIdx = i * (128 * 256) + j * 256 + k;
+                std::size_t outputIdx = j * (256 * 12) + k * 12 + i;
+                output[outputIdx] = input[inputIdx];
+            }
+        }
+    }
+}
+}    // namespace
+
 
 void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
          const std::array<std::uint8_t, 12 * 128 * 256>& bigImages,
@@ -79,8 +94,13 @@ void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
     std::memset(inputImgsBuffer, 0U, sizeof(inputImgsBuffer));
     std::memset(bigInputImgsBuffer, 0U, sizeof(bigInputImgsBuffer));
 
-    memcpy(inputImgsBuffer, images.data(), 128U * 256U * 12U);
-    memcpy(bigInputImgsBuffer, bigImages.data(), 128U * 256U * 12U);
+    // reorder
+    std::array<std::uint8_t, 1U * 128U * 256U * 12U> ibo;
+    std::array<std::uint8_t, 1U * 128U * 256U * 12U> bibo;
+    reorder(images, ibo);
+    reorder(bigImages, bibo);
+    memcpy(inputImgsBuffer, ibo.data(), 128U * 256U * 12U);
+    memcpy(bigInputImgsBuffer, bibo.data(), 128U * 256U * 12U);
 
 
     // Put data into tensor
