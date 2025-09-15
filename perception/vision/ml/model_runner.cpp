@@ -32,7 +32,9 @@ void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
          std::array<float, 632U>& output) {
     // Load model
     armnnTfLiteParser::ITfLiteParserPtr parser = armnnTfLiteParser::ITfLiteParser::Create();
-    armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile("models/onnx2py_fp32_float32.tflite");
+    armnn::INetworkPtr network =
+      parser->CreateNetworkFromBinaryFile("/home/heqichen/workspace/tinypilot/mlutils/modelgen/models_tflite/"
+                                          "test_model_pb/driving_vision_fp32_float32.tflite");
 
     // Create ArmNN runtime
     armnn::IRuntime::CreationOptions options;    // default options
@@ -94,21 +96,24 @@ void run(const std::array<std::uint8_t, 12 * 128 * 256>& images,
     std::memset(inputImgsBuffer, 0U, sizeof(inputImgsBuffer));
     std::memset(bigInputImgsBuffer, 0U, sizeof(bigInputImgsBuffer));
 
-    // reorder
-    std::array<std::uint8_t, 1U * 128U * 256U * 12U> ibo;
-    std::array<std::uint8_t, 1U * 128U * 256U * 12U> bibo;
-    reorder(images, ibo);
-    reorder(bigImages, bibo);
-    memcpy(inputImgsBuffer, ibo.data(), 128U * 256U * 12U);
-    memcpy(bigInputImgsBuffer, bibo.data(), 128U * 256U * 12U);
+    // // reorder
+    // std::array<std::uint8_t, 1U * 128U * 256U * 12U> ibo;
+    // std::array<std::uint8_t, 1U * 128U * 256U * 12U> bibo;
+    // reorder(images, ibo);
+    // reorder(bigImages, bibo);
+    // memcpy(inputImgsBuffer, ibo.data(), 128U * 256U * 12U);
+    // memcpy(bigInputImgsBuffer, bibo.data(), 128U * 256U * 12U);
 
+
+    memcpy(inputImgsBuffer, images.data(), 128U * 256U * 12U);
+    memcpy(bigInputImgsBuffer, bigImages.data(), 128U * 256U * 12U);
 
     // Put data into tensor
     armnn::BindingPointInfo inputImgsBinding = parser->GetNetworkInputBindingInfo(0, "input_imgs");
     armnn::BindingPointInfo bigInputImgsBinding = parser->GetNetworkInputBindingInfo(0, "big_input_imgs");
     armnn::InputTensors inputTensors {
       {inputImgsBinding.first, armnn::ConstTensor(inputImgsBinding.second, inputImgsBuffer)},
-      {bigInputImgsBinding.first, armnn::ConstTensor(bigInputImgsBinding.second, inputImgsBuffer)},
+      {bigInputImgsBinding.first, armnn::ConstTensor(bigInputImgsBinding.second, bigInputImgsBuffer)},
     };
 
     // float outputBuffer[1U * 632U];

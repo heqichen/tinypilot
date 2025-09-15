@@ -22,9 +22,9 @@ static std::size_t count {0U};
 void writeAllToFile(const std::array<std::uint8_t, 12 * 128 * 256> &imgs,
                     const std::array<std::uint8_t, 12 * 128 * 256> &bigImgs,
                     const std::array<float, 632U> &output) {
-    std::string inputImgsFilename = "output/imgs" + std::to_string(count) + ".csv";
-    std::string inputBigImgsFilename = "output/bigImgs" + std::to_string(count) + ".csv";
-    std::string outputFilename = "output/output" + std::to_string(count) + ".csv";
+    std::string inputImgsFilename = "output-newgen/imgs" + std::to_string(count) + ".csv";
+    std::string inputBigImgsFilename = "output-newgen/bigImgs" + std::to_string(count) + ".csv";
+    std::string outputFilename = "output-newgen/output" + std::to_string(count) + ".csv";
 
     std::ofstream inputImgsFile(inputImgsFilename);
     std::ofstream inputBigImgsFile(inputBigImgsFilename);
