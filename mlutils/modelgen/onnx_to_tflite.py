@@ -128,6 +128,8 @@ def _report_convert_model(file_path):
                 "desire",
                 "prev_desired_curv",
                 "features_buffer",
+                "input_imgs",
+                "big_input_imgs",
             ],
         )
         # os.remove(file_path)

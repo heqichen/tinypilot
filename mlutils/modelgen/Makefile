@@ -20,7 +20,9 @@ models_py/driving_policy.py: $(WORKSPACE_ROOT)/POC/resources/models/driving_poli
 	python -m onnxconverter_common.onnx2py $^ $@
 	patch models_py/driving_policy.py driving_policy.patch
 
-
+# python convert_vision.py -m models_fp32/ -o models_tflite/ -v
+# This command run overnight
+#
 
 clean:
 	rm -rf models_py models_fp32
