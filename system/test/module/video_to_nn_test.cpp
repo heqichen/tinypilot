@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "datadefs/ml/vision.h"
 #include "perception/vision/ml/model_runner.h"
 #include "perception/vision/prepare.h"
 #include "sensor/vision/input/video_input.h"
@@ -45,6 +46,8 @@ void writeAllToFile(const std::array<std::uint8_t, 12 * 128 * 256> &imgs,
 }
 
 TEST(MODULE_TEST, GivenVideoShouldOutputCorrectVisionResult) {
+    assert(sizeof(datadef::ml::Vision) == 632U * sizeof(float));
+
     constexpr const char *kVideoPath = "assets/driving_clip.mp4";
     const sensor::vision::input::VideoInput::OnVideoFrameCallback onVideoFrameCallback =
       [](const std::uint8_t *frameData, std::size_t width, std::size_t height) {
