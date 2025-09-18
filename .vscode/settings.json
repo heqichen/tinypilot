@@ -70,7 +70,8 @@
         "variant": "cpp",
         "bitset": "cpp",
         "__nullptr": "cpp",
-        "__debug": "cpp"
+        "__debug": "cpp",
+        "regex": "cpp"
     },
     "editor.formatOnSave": true
 }

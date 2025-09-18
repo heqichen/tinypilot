@@ -5,7 +5,6 @@
 THIS_MAKEFILE := $(lastword $(MAKEFILE_LIST))
 WORKSPACE_ROOT := $(abspath $(dir $(THIS_MAKEFILE)))
 
-
 GTEST_INCLUDE_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/include
 GTEST_LIB_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/lib
 GTEST_CXXFLAGS := -I$(GTEST_INCLUDE_DIR)
@@ -22,6 +21,8 @@ OPENCV_LDFLAGS := $(shell pkg-config --libs opencv4)
 CXXFLAGS := -I$(WORKSPACE_ROOT)
 
 LD_LIBRARY_PATH := $(WORKSPACE_ROOT)/third_party/ArmNN/output:$(LD_LIBRARY_PATH)
+
+DEFFLAGS := -DWORKSPACE_ROOT=\"$(WORKSPACE_ROOT)\"
 
 ifeq ($(CLANG),1)
 CXX := clang++
@@ -44,6 +45,8 @@ endif
 
 CP := cp
 
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(DEFFLAGS) -c $< -o $@
 
 
 # MAKE := DEBUG=$(DEBUG) CLANG=$(CLANG) make

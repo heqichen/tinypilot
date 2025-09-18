@@ -1,9 +1,10 @@
 include ../common.mk
 
 CXXFLAGS += $(ARMNN_CXXFLAGS)
-all: model_runner.o
+all: vision_runner.o model_runtime.o
 
-model_runner.o: model_runner.cpp model_runner.h Makefile
+vision_runner.o: vision_runner.cpp vision_runner.h Makefile
+model_runtime.o: model_runtime.cpp model_runtime.h Makefile
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
