@@ -8,6 +8,8 @@ WORKSPACE_ROOT := $(abspath $(dir $(THIS_MAKEFILE)))
 
 GTEST_INCLUDE_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/include
 GTEST_LIB_DIR := $(WORKSPACE_ROOT)/third_party/googletest/install/lib
+GTEST_CXXFLAGS := -I$(GTEST_INCLUDE_DIR)
+GTEST_LDFLAGS := -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
 
 ARMNN_INCLUDE_DIR := $(WORKSPACE_ROOT)/third_party/ArmNN/output/include
 ARMNN_LIB_DIR := $(WORKSPACE_ROOT)/third_party/ArmNN/output
@@ -17,8 +19,9 @@ ARMNN_LDFLAGS := -L$(ARMNN_LIB_DIR) -larmnn -larmnnTfLiteParser -lprotobuf
 OPENCV_CXXFLAGS := $(shell pkg-config --cflags opencv4)
 OPENCV_LDFLAGS := $(shell pkg-config --libs opencv4)
 
-
 CXXFLAGS := -I$(WORKSPACE_ROOT)
+
+LD_LIBRARY_PATH := $(WORKSPACE_ROOT)/third_party/ArmNN/output:$(LD_LIBRARY_PATH)
 
 ifeq ($(CLANG),1)
 CXX := clang++

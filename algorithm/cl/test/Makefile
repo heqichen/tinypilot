@@ -1,7 +1,7 @@
 include ../../../common.mk
 
-CXXFLAGS += -I$(GTEST_INCLUDE_DIR)
-LDFLAGS += -lOpenCL -L$(GTEST_LIB_DIR) -lgtest_main -lgtest
+CXXFLAGS += $(GTEST_CXXFLAGS)
+LDFLAGS += -lOpenCL $(GTEST_LDFLAGS)
 TARGET = simple_cl_test mm_layout_test cl_info transform_test
 
 all: $(TARGET)
