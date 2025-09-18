@@ -3,9 +3,9 @@ include ../../../common.mk
 CXXFLAGS += $(ARMNN_CXXFLAGS)
 
 
-all: model_runner.o
+all: vision_runner.o
 
-model_runner.o: model_runner.cpp model_runner.h Makefile | models/onnx2py_fp32_float32.tflite
+vision_runner.o: vision_runner.cpp vision_runner.h Makefile | models/onnx2py_fp32_float32.tflite
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@ LDFLAGS += -L$(GTEST_LIB_DIR) -lgtest_main -lgtest -lOpenCL $(ARMNN_LDFLAGS) $(O
 TARGETS := vision_smoke_test video_to_nn_test
 
 OBJS := $(WORKSPACE_ROOT)/perception/vision/prepare.o
-OBJS += $(WORKSPACE_ROOT)/perception/vision/ml/model_runner.o
+OBJS += $(WORKSPACE_ROOT)/perception/vision/ml/vision_runner.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/transform.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/cl_util.o
 OBJS += $(WORKSPACE_ROOT)/algorithm/cl/mm_layout.o

@@ -1,4 +1,4 @@
-#include "perception/vision/ml/model_runner.h"
+#include "perception/vision/ml/vision_runner.h"
 #include <armnn/IRuntime.hpp>
 #include <armnnTfLiteParser/ITfLiteParser.hpp>
 #include <array>
