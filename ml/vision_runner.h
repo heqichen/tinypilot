@@ -7,6 +7,7 @@
 
 namespace cooboc {
 namespace ml {
+
 class VisionRunner {
   public:
     explicit VisionRunner(const char *tfliteFilepath);
