@@ -10,6 +10,8 @@ models_fp32/driving_policy.onnx: models_py/driving_policy.py
 	mkdir -p models_fp32
 	python models_py/driving_policy.py models_fp32/driving_policy_fp32.onnx
 
+# Make patch diff driving_policy_orig.py driving_policy.py
+
 models_py/driving_vision.py: $(WORKSPACE_ROOT)/POC/resources/models/driving_vision.onnx
 	mkdir -p models_py
 	python -m onnxconverter_common.onnx2py $^ $@

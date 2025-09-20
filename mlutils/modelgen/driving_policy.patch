@@ -475,7 +475,16 @@
 <                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float16'), name=''),
 ---
 >                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float32'), name=''),
-1451c1443
+1295,1296c1287,1291
+<             make_node('Constant', inputs=[], outputs=['/Constant_1_output_0'], name='/Constant_1', value=numpy_helper.from_array(np.array(24, dtype='int64'), name='')),
+<             make_node('Gather', inputs=['prev_desired_curv', '/Constant_1_output_0'], outputs=['/Gather_1_output_0'], name='/Gather_1', axis=1),
+---
+>             make_node('Constant', inputs=[], outputs=['/Constant_1_output_0'], name='/Constant_1', value=numpy_helper.from_array(np.array([24], dtype='int64'), name='')),
+>             make_node('Gather', inputs=['prev_desired_curv', '/Constant_1_output_0'], outputs=['/last_prev_desired_curv'], name='/Gather_1', axis=1),
+>             # Fix dimenson error
+>             make_node('Constant', inputs=[], outputs=['/Constant_Reshape_pdc'], name='/Constant_pdc', value=numpy_helper.from_array(np.array([1, -1], dtype='int64'), name='')),
+>             make_node('Reshape', inputs=['/last_prev_desired_curv', '/Constant_Reshape_pdc'], outputs=['/Gather_1_output_0'], name='/Reshape_pdc', allowzero=0),
+1451c1446
 <                 value=numpy_helper.from_array(np.array([[0.01000213623046875, 1.0]], dtype='float16'), name=''),
 ---
 >                 value=numpy_helper.from_array(np.array([[0.01000213623046875, 1.0]], dtype='float32'), name=''),
