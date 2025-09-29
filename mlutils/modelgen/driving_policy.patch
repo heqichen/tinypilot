@@ -1,0 +1,490 @@
+42,49d41
+<     metadata_props=[
+<         key: "output_slices"
+<         value: "gASVEwEAAAAAAAB9lCiMBHBsYW6UjAhidWlsdGluc5SMBXNsaWNllJOUSwBNWxNOh5RSlIwKbGFu\nZV9saW5lc5RoBE1bE01rFU6HlFKUjA9sYW5lX2xpbmVzX3Byb2KUaARNaxVNcxVOh5RSlIwKcm9h\nZF9lZGdlc5RoBE1zFU17Fk6HlFKUjARsZWFklGgETXsWTeEWToeUUpSMCWxlYWRfcHJvYpRoBE3h\nFk3kFk6HlFKUjAxkZXNpcmVfc3RhdGWUaARN5BZN7BZOh5RSlIwIc2ltX3Bvc2WUaARN7BZN+BZO\nh5RSlIwRZGVzaXJlZF9jdXJ2YXR1cmWUaARN+BZN+hZOh5RSlIwDcGFklGgESv7///9OToeUUpR1\nLg==\n"
+<         ,
+<         key: "model_checkpoint"
+<         value: "e07ce1de-bdea-463e-b5bc-a38ce8d43f4f/700"
+<         ,
+<     ],
+53,57c45,49
+<             helper.make_tensor_value_info('desire', TensorProto.FLOAT16, shape=[1, 25, 8]),
+<             helper.make_tensor_value_info('traffic_convention', TensorProto.FLOAT16, shape=[1, 2]),
+<             helper.make_tensor_value_info('lateral_control_params', TensorProto.FLOAT16, shape=[1, 2]),
+<             helper.make_tensor_value_info('prev_desired_curv', TensorProto.FLOAT16, shape=[1, 25, 1]),
+<             helper.make_tensor_value_info('features_buffer', TensorProto.FLOAT16, shape=[1, 25, 512]),
+---
+>             helper.make_tensor_value_info('desire', TensorProto.FLOAT, shape=[1, 25, 8]),
+>             helper.make_tensor_value_info('traffic_convention', TensorProto.FLOAT, shape=[1, 2]),
+>             helper.make_tensor_value_info('lateral_control_params', TensorProto.FLOAT, shape=[1, 2]),
+>             helper.make_tensor_value_info('prev_desired_curv', TensorProto.FLOAT, shape=[1, 25, 1]),
+>             helper.make_tensor_value_info('features_buffer', TensorProto.FLOAT, shape=[1, 25, 512]),
+59c51
+<         outputs=[helper.make_tensor_value_info('outputs', TensorProto.FLOAT16, shape=[1, 5884])],
+---
+>         outputs=[helper.make_tensor_value_info('outputs', TensorProto.FLOAT, shape=[1, 5884])],
+61c53
+<             numpy_helper.from_array(np.array([[0.0, 0.0]], dtype='float16'), name='pad'),
+---
+>             numpy_helper.from_array(np.array([[0.0, 0.0]], dtype='float32'), name='pad'),
+63c55
+<                 np.load(os.path.join(DATA_DIR, 'const0_policy_model.temporal_summarizer._extra_in.0.weight.npy')).astype('float16').reshape([512, 202]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const0_policy_model.temporal_summarizer._extra_in.0.weight.npy')).astype('float32').reshape([512, 202]),
+67c59
+<                 np.load(os.path.join(DATA_DIR, 'const1_policy_model.temporal_summarizer._extra_in.0.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const1_policy_model.temporal_summarizer._extra_in.0.bias.npy')).astype('float32').reshape([512]),
+71c63
+<                 np.load(os.path.join(DATA_DIR, 'const2_policy_model.temporal_summarizer._encode.0.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const2_policy_model.temporal_summarizer._encode.0.bias.npy')).astype('float32').reshape([512]),
+75c67
+<                 np.load(os.path.join(DATA_DIR, 'const3_policy_model.temporal_summarizer.transformer.0.attn.layer_norm.weight.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const3_policy_model.temporal_summarizer.transformer.0.attn.layer_norm.weight.npy')).astype('float32').reshape([512]),
+79c71
+<                 np.load(os.path.join(DATA_DIR, 'const4_policy_model.temporal_summarizer.transformer.0.attn.layer_norm.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const4_policy_model.temporal_summarizer.transformer.0.attn.layer_norm.bias.npy')).astype('float32').reshape([512]),
+83c75
+<                 np.load(os.path.join(DATA_DIR, 'const5_policy_model.temporal_summarizer.transformer.0.attn.c_attn.bias.npy')).astype('float16').reshape([1536]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const5_policy_model.temporal_summarizer.transformer.0.attn.c_attn.bias.npy')).astype('float32').reshape([1536]),
+87c79
+<                 np.load(os.path.join(DATA_DIR, 'const6_policy_model.temporal_summarizer.transformer.0.attn.c_proj.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const6_policy_model.temporal_summarizer.transformer.0.attn.c_proj.bias.npy')).astype('float32').reshape([512]),
+91c83
+<                 np.load(os.path.join(DATA_DIR, 'const7_policy_model.temporal_summarizer.transformer.0.mlp.layer_norm.weight.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const7_policy_model.temporal_summarizer.transformer.0.mlp.layer_norm.weight.npy')).astype('float32').reshape([512]),
+95c87
+<                 np.load(os.path.join(DATA_DIR, 'const8_policy_model.temporal_summarizer.transformer.0.mlp.layer_norm.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const8_policy_model.temporal_summarizer.transformer.0.mlp.layer_norm.bias.npy')).astype('float32').reshape([512]),
+99c91
+<                 np.load(os.path.join(DATA_DIR, 'const9_policy_model.temporal_summarizer.transformer.0.mlp.c_fc.bias.npy')).astype('float16').reshape([2048]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const9_policy_model.temporal_summarizer.transformer.0.mlp.c_fc.bias.npy')).astype('float32').reshape([2048]),
+103c95
+<                 np.load(os.path.join(DATA_DIR, 'const10_policy_model.temporal_summarizer.transformer.0.mlp.c_proj.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const10_policy_model.temporal_summarizer.transformer.0.mlp.c_proj.bias.npy')).astype('float32').reshape([512]),
+107c99
+<                 np.load(os.path.join(DATA_DIR, 'const11_policy_model.temporal_hydra.resblock.block_a.0.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const11_policy_model.temporal_hydra.resblock.block_a.0.weight.npy')).astype('float32').reshape([1024, 512]),
+111c103
+<                 np.load(os.path.join(DATA_DIR, 'const12_policy_model.temporal_hydra.resblock.block_a.0.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const12_policy_model.temporal_hydra.resblock.block_a.0.bias.npy')).astype('float32').reshape([1024]),
+115c107
+<                 np.load(os.path.join(DATA_DIR, 'const13_policy_model.temporal_hydra.resblock.block_a.3.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const13_policy_model.temporal_hydra.resblock.block_a.3.weight.npy')).astype('float32').reshape([512, 1024]),
+119c111
+<                 np.load(os.path.join(DATA_DIR, 'const14_policy_model.temporal_hydra.resblock.block_a.3.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const14_policy_model.temporal_hydra.resblock.block_a.3.bias.npy')).astype('float32').reshape([512]),
+123c115
+<                 np.load(os.path.join(DATA_DIR, 'const15_policy_model.temporal_hydra.resblock.block_b.1.weight.npy')).astype('float16').reshape([1024, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const15_policy_model.temporal_hydra.resblock.block_b.1.weight.npy')).astype('float32').reshape([1024, 512]),
+127c119
+<                 np.load(os.path.join(DATA_DIR, 'const16_policy_model.temporal_hydra.resblock.block_b.1.bias.npy')).astype('float16').reshape([1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const16_policy_model.temporal_hydra.resblock.block_b.1.bias.npy')).astype('float32').reshape([1024]),
+131c123
+<                 np.load(os.path.join(DATA_DIR, 'const17_policy_model.temporal_hydra.resblock.block_b.4.weight.npy')).astype('float16').reshape([512, 1024]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const17_policy_model.temporal_hydra.resblock.block_b.4.weight.npy')).astype('float32').reshape([512, 1024]),
+135c127
+<                 np.load(os.path.join(DATA_DIR, 'const18_policy_model.temporal_hydra.resblock.block_b.4.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const18_policy_model.temporal_hydra.resblock.block_b.4.bias.npy')).astype('float32').reshape([512]),
+139c131
+<                 np.load(os.path.join(DATA_DIR, 'const19_policy_model.temporal_hydra.in_layer.plan.weight.npy')).astype('float16').reshape([256, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const19_policy_model.temporal_hydra.in_layer.plan.weight.npy')).astype('float32').reshape([256, 512]),
+143c135
+<                 np.load(os.path.join(DATA_DIR, 'const20_policy_model.temporal_hydra.in_layer.plan.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const20_policy_model.temporal_hydra.in_layer.plan.bias.npy')).astype('float32').reshape([256]),
+147c139
+<                 np.load(os.path.join(DATA_DIR, 'const21_policy_model.temporal_hydra.in_layer.lead.weight.npy')).astype('float16').reshape([64, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const21_policy_model.temporal_hydra.in_layer.lead.weight.npy')).astype('float32').reshape([64, 512]),
+151c143
+<                 np.load(os.path.join(DATA_DIR, 'const22_policy_model.temporal_hydra.in_layer.lead.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const22_policy_model.temporal_hydra.in_layer.lead.bias.npy')).astype('float32').reshape([64]),
+155c147
+<                 np.load(os.path.join(DATA_DIR, 'const23_policy_model.temporal_hydra.in_layer.lead_prob.weight.npy')).astype('float16').reshape([16, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const23_policy_model.temporal_hydra.in_layer.lead_prob.weight.npy')).astype('float32').reshape([16, 512]),
+159c151
+<                 np.load(os.path.join(DATA_DIR, 'const24_policy_model.temporal_hydra.in_layer.lead_prob.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const24_policy_model.temporal_hydra.in_layer.lead_prob.bias.npy')).astype('float32').reshape([16]),
+163c155
+<                 np.load(os.path.join(DATA_DIR, 'const25_policy_model.temporal_hydra.in_layer.lane_lines_prob.weight.npy')).astype('float16').reshape([16, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const25_policy_model.temporal_hydra.in_layer.lane_lines_prob.weight.npy')).astype('float32').reshape([16, 512]),
+167c159
+<                 np.load(os.path.join(DATA_DIR, 'const26_policy_model.temporal_hydra.in_layer.lane_lines_prob.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const26_policy_model.temporal_hydra.in_layer.lane_lines_prob.bias.npy')).astype('float32').reshape([16]),
+171c163
+<                 np.load(os.path.join(DATA_DIR, 'const27_policy_model.temporal_hydra.in_layer.road_edges.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const27_policy_model.temporal_hydra.in_layer.road_edges.weight.npy')).astype('float32').reshape([32, 512]),
+175c167
+<                 np.load(os.path.join(DATA_DIR, 'const28_policy_model.temporal_hydra.in_layer.road_edges.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const28_policy_model.temporal_hydra.in_layer.road_edges.bias.npy')).astype('float32').reshape([32]),
+179c171
+<                 np.load(os.path.join(DATA_DIR, 'const29_policy_model.temporal_hydra.in_layer.lane_lines.weight.npy')).astype('float16').reshape([64, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const29_policy_model.temporal_hydra.in_layer.lane_lines.weight.npy')).astype('float32').reshape([64, 512]),
+183c175
+<                 np.load(os.path.join(DATA_DIR, 'const30_policy_model.temporal_hydra.in_layer.lane_lines.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const30_policy_model.temporal_hydra.in_layer.lane_lines.bias.npy')).astype('float32').reshape([64]),
+187c179
+<                 np.load(os.path.join(DATA_DIR, 'const31_policy_model.temporal_hydra.in_layer.desire_state.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const31_policy_model.temporal_hydra.in_layer.desire_state.weight.npy')).astype('float32').reshape([32, 512]),
+191c183
+<                 np.load(os.path.join(DATA_DIR, 'const32_policy_model.temporal_hydra.in_layer.desire_state.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const32_policy_model.temporal_hydra.in_layer.desire_state.bias.npy')).astype('float32').reshape([32]),
+195c187
+<                 np.load(os.path.join(DATA_DIR, 'const33_policy_model.temporal_hydra.in_layer.sim_pose.weight.npy')).astype('float16').reshape([32, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const33_policy_model.temporal_hydra.in_layer.sim_pose.weight.npy')).astype('float32').reshape([32, 512]),
+199c191
+<                 np.load(os.path.join(DATA_DIR, 'const34_policy_model.temporal_hydra.in_layer.sim_pose.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const34_policy_model.temporal_hydra.in_layer.sim_pose.bias.npy')).astype('float32').reshape([32]),
+203c195
+<                 np.load(os.path.join(DATA_DIR, 'const35_policy_model.temporal_hydra.res_layer.plan.0.weight.npy')).astype('float16').reshape([256, 256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const35_policy_model.temporal_hydra.res_layer.plan.0.weight.npy')).astype('float32').reshape([256, 256]),
+207c199
+<                 np.load(os.path.join(DATA_DIR, 'const36_policy_model.temporal_hydra.res_layer.plan.0.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const36_policy_model.temporal_hydra.res_layer.plan.0.bias.npy')).astype('float32').reshape([256]),
+211c203
+<                 np.load(os.path.join(DATA_DIR, 'const37_policy_model.temporal_hydra.res_layer.plan.2.weight.npy')).astype('float16').reshape([256, 256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const37_policy_model.temporal_hydra.res_layer.plan.2.weight.npy')).astype('float32').reshape([256, 256]),
+215c207
+<                 np.load(os.path.join(DATA_DIR, 'const38_policy_model.temporal_hydra.res_layer.plan.2.bias.npy')).astype('float16').reshape([256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const38_policy_model.temporal_hydra.res_layer.plan.2.bias.npy')).astype('float32').reshape([256]),
+219c211
+<                 np.load(os.path.join(DATA_DIR, 'const39_policy_model.temporal_hydra.res_layer.lead.0.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const39_policy_model.temporal_hydra.res_layer.lead.0.weight.npy')).astype('float32').reshape([64, 64]),
+223c215
+<                 np.load(os.path.join(DATA_DIR, 'const40_policy_model.temporal_hydra.res_layer.lead.0.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const40_policy_model.temporal_hydra.res_layer.lead.0.bias.npy')).astype('float32').reshape([64]),
+227c219
+<                 np.load(os.path.join(DATA_DIR, 'const41_policy_model.temporal_hydra.res_layer.lead.2.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const41_policy_model.temporal_hydra.res_layer.lead.2.weight.npy')).astype('float32').reshape([64, 64]),
+231c223
+<                 np.load(os.path.join(DATA_DIR, 'const42_policy_model.temporal_hydra.res_layer.lead.2.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const42_policy_model.temporal_hydra.res_layer.lead.2.bias.npy')).astype('float32').reshape([64]),
+235c227
+<                 np.load(os.path.join(DATA_DIR, 'const43_policy_model.temporal_hydra.res_layer.lead_prob.0.weight.npy')).astype('float16').reshape([16, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const43_policy_model.temporal_hydra.res_layer.lead_prob.0.weight.npy')).astype('float32').reshape([16, 16]),
+239c231
+<                 np.load(os.path.join(DATA_DIR, 'const44_policy_model.temporal_hydra.res_layer.lead_prob.0.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const44_policy_model.temporal_hydra.res_layer.lead_prob.0.bias.npy')).astype('float32').reshape([16]),
+243c235
+<                 np.load(os.path.join(DATA_DIR, 'const45_policy_model.temporal_hydra.res_layer.lead_prob.2.weight.npy')).astype('float16').reshape([16, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const45_policy_model.temporal_hydra.res_layer.lead_prob.2.weight.npy')).astype('float32').reshape([16, 16]),
+247c239
+<                 np.load(os.path.join(DATA_DIR, 'const46_policy_model.temporal_hydra.res_layer.lead_prob.2.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const46_policy_model.temporal_hydra.res_layer.lead_prob.2.bias.npy')).astype('float32').reshape([16]),
+251c243
+<                 np.load(os.path.join(DATA_DIR, 'const47_policy_model.temporal_hydra.res_layer.lane_lines_prob.0.weight.npy')).astype('float16').reshape([16, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const47_policy_model.temporal_hydra.res_layer.lane_lines_prob.0.weight.npy')).astype('float32').reshape([16, 16]),
+255c247
+<                 np.load(os.path.join(DATA_DIR, 'const48_policy_model.temporal_hydra.res_layer.lane_lines_prob.0.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const48_policy_model.temporal_hydra.res_layer.lane_lines_prob.0.bias.npy')).astype('float32').reshape([16]),
+259c251
+<                 np.load(os.path.join(DATA_DIR, 'const49_policy_model.temporal_hydra.res_layer.lane_lines_prob.2.weight.npy')).astype('float16').reshape([16, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const49_policy_model.temporal_hydra.res_layer.lane_lines_prob.2.weight.npy')).astype('float32').reshape([16, 16]),
+263c255
+<                 np.load(os.path.join(DATA_DIR, 'const50_policy_model.temporal_hydra.res_layer.lane_lines_prob.2.bias.npy')).astype('float16').reshape([16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const50_policy_model.temporal_hydra.res_layer.lane_lines_prob.2.bias.npy')).astype('float32').reshape([16]),
+267c259
+<                 np.load(os.path.join(DATA_DIR, 'const51_policy_model.temporal_hydra.res_layer.road_edges.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const51_policy_model.temporal_hydra.res_layer.road_edges.0.weight.npy')).astype('float32').reshape([32, 32]),
+271c263
+<                 np.load(os.path.join(DATA_DIR, 'const52_policy_model.temporal_hydra.res_layer.road_edges.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const52_policy_model.temporal_hydra.res_layer.road_edges.0.bias.npy')).astype('float32').reshape([32]),
+275c267
+<                 np.load(os.path.join(DATA_DIR, 'const53_policy_model.temporal_hydra.res_layer.road_edges.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const53_policy_model.temporal_hydra.res_layer.road_edges.2.weight.npy')).astype('float32').reshape([32, 32]),
+279c271
+<                 np.load(os.path.join(DATA_DIR, 'const54_policy_model.temporal_hydra.res_layer.road_edges.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const54_policy_model.temporal_hydra.res_layer.road_edges.2.bias.npy')).astype('float32').reshape([32]),
+283c275
+<                 np.load(os.path.join(DATA_DIR, 'const55_policy_model.temporal_hydra.res_layer.lane_lines.0.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const55_policy_model.temporal_hydra.res_layer.lane_lines.0.weight.npy')).astype('float32').reshape([64, 64]),
+287c279
+<                 np.load(os.path.join(DATA_DIR, 'const56_policy_model.temporal_hydra.res_layer.lane_lines.0.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const56_policy_model.temporal_hydra.res_layer.lane_lines.0.bias.npy')).astype('float32').reshape([64]),
+291c283
+<                 np.load(os.path.join(DATA_DIR, 'const57_policy_model.temporal_hydra.res_layer.lane_lines.2.weight.npy')).astype('float16').reshape([64, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const57_policy_model.temporal_hydra.res_layer.lane_lines.2.weight.npy')).astype('float32').reshape([64, 64]),
+295c287
+<                 np.load(os.path.join(DATA_DIR, 'const58_policy_model.temporal_hydra.res_layer.lane_lines.2.bias.npy')).astype('float16').reshape([64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const58_policy_model.temporal_hydra.res_layer.lane_lines.2.bias.npy')).astype('float32').reshape([64]),
+299c291
+<                 np.load(os.path.join(DATA_DIR, 'const59_policy_model.temporal_hydra.res_layer.desire_state.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const59_policy_model.temporal_hydra.res_layer.desire_state.0.weight.npy')).astype('float32').reshape([32, 32]),
+303c295
+<                 np.load(os.path.join(DATA_DIR, 'const60_policy_model.temporal_hydra.res_layer.desire_state.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const60_policy_model.temporal_hydra.res_layer.desire_state.0.bias.npy')).astype('float32').reshape([32]),
+307c299
+<                 np.load(os.path.join(DATA_DIR, 'const61_policy_model.temporal_hydra.res_layer.desire_state.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const61_policy_model.temporal_hydra.res_layer.desire_state.2.weight.npy')).astype('float32').reshape([32, 32]),
+311c303
+<                 np.load(os.path.join(DATA_DIR, 'const62_policy_model.temporal_hydra.res_layer.desire_state.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const62_policy_model.temporal_hydra.res_layer.desire_state.2.bias.npy')).astype('float32').reshape([32]),
+315c307
+<                 np.load(os.path.join(DATA_DIR, 'const63_policy_model.temporal_hydra.res_layer.sim_pose.0.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const63_policy_model.temporal_hydra.res_layer.sim_pose.0.weight.npy')).astype('float32').reshape([32, 32]),
+319c311
+<                 np.load(os.path.join(DATA_DIR, 'const64_policy_model.temporal_hydra.res_layer.sim_pose.0.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const64_policy_model.temporal_hydra.res_layer.sim_pose.0.bias.npy')).astype('float32').reshape([32]),
+323c315
+<                 np.load(os.path.join(DATA_DIR, 'const65_policy_model.temporal_hydra.res_layer.sim_pose.2.weight.npy')).astype('float16').reshape([32, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const65_policy_model.temporal_hydra.res_layer.sim_pose.2.weight.npy')).astype('float32').reshape([32, 32]),
+327c319
+<                 np.load(os.path.join(DATA_DIR, 'const66_policy_model.temporal_hydra.res_layer.sim_pose.2.bias.npy')).astype('float16').reshape([32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const66_policy_model.temporal_hydra.res_layer.sim_pose.2.bias.npy')).astype('float32').reshape([32]),
+331c323
+<                 np.load(os.path.join(DATA_DIR, 'const67_policy_model.temporal_hydra.final_layer.plan.weight.npy')).astype('float16').reshape([4955, 256]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const67_policy_model.temporal_hydra.final_layer.plan.weight.npy')).astype('float32').reshape([4955, 256]),
+335c327
+<                 np.load(os.path.join(DATA_DIR, 'const68_policy_model.temporal_hydra.final_layer.plan.bias.npy')).astype('float16').reshape([4955]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const68_policy_model.temporal_hydra.final_layer.plan.bias.npy')).astype('float32').reshape([4955]),
+339c331
+<                 np.load(os.path.join(DATA_DIR, 'const69_policy_model.temporal_hydra.final_layer.lead.weight.npy')).astype('float16').reshape([102, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const69_policy_model.temporal_hydra.final_layer.lead.weight.npy')).astype('float32').reshape([102, 64]),
+343c335
+<                 np.load(os.path.join(DATA_DIR, 'const70_policy_model.temporal_hydra.final_layer.lead.bias.npy')).astype('float16').reshape([102]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const70_policy_model.temporal_hydra.final_layer.lead.bias.npy')).astype('float32').reshape([102]),
+347c339
+<                 np.load(os.path.join(DATA_DIR, 'const71_policy_model.temporal_hydra.final_layer.lead_prob.weight.npy')).astype('float16').reshape([3, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const71_policy_model.temporal_hydra.final_layer.lead_prob.weight.npy')).astype('float32').reshape([3, 16]),
+350c342
+<             numpy_helper.from_array(np.array([-0.043304443359375, 0.0509033203125, 0.2467041015625], dtype='float16'), name='policy_model.temporal_hydra.final_layer.lead_prob.bias'),
+---
+>             numpy_helper.from_array(np.array([-0.043304443359375, 0.0509033203125, 0.2467041015625], dtype='float32'), name='policy_model.temporal_hydra.final_layer.lead_prob.bias'),
+352c344
+<                 np.load(os.path.join(DATA_DIR, 'const72_policy_model.temporal_hydra.final_layer.lane_lines_prob.weight.npy')).astype('float16').reshape([8, 16]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const72_policy_model.temporal_hydra.final_layer.lane_lines_prob.weight.npy')).astype('float32').reshape([8, 16]),
+356c348
+<                 np.array([-0.322509765625, 0.07012939453125, 0.194580078125, 0.48046875, -0.0077362060546875, -0.00274658203125, 0.333984375, 0.1387939453125], dtype='float16'),
+---
+>                 np.array([-0.322509765625, 0.07012939453125, 0.194580078125, 0.48046875, -0.0077362060546875, -0.00274658203125, 0.333984375, 0.1387939453125], dtype='float32'),
+360c352
+<                 np.load(os.path.join(DATA_DIR, 'const73_policy_model.temporal_hydra.final_layer.road_edges.weight.npy')).astype('float16').reshape([264, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const73_policy_model.temporal_hydra.final_layer.road_edges.weight.npy')).astype('float32').reshape([264, 32]),
+364c356
+<                 np.load(os.path.join(DATA_DIR, 'const74_policy_model.temporal_hydra.final_layer.road_edges.bias.npy')).astype('float16').reshape([264]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const74_policy_model.temporal_hydra.final_layer.road_edges.bias.npy')).astype('float32').reshape([264]),
+368c360
+<                 np.load(os.path.join(DATA_DIR, 'const75_policy_model.temporal_hydra.final_layer.lane_lines.weight.npy')).astype('float16').reshape([528, 64]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const75_policy_model.temporal_hydra.final_layer.lane_lines.weight.npy')).astype('float32').reshape([528, 64]),
+372c364
+<                 np.load(os.path.join(DATA_DIR, 'const76_policy_model.temporal_hydra.final_layer.lane_lines.bias.npy')).astype('float16').reshape([528]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const76_policy_model.temporal_hydra.final_layer.lane_lines.bias.npy')).astype('float32').reshape([528]),
+376c368
+<                 np.load(os.path.join(DATA_DIR, 'const77_policy_model.temporal_hydra.final_layer.desire_state.weight.npy')).astype('float16').reshape([8, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const77_policy_model.temporal_hydra.final_layer.desire_state.weight.npy')).astype('float32').reshape([8, 32]),
+380c372
+<                 np.array([0.336181640625, -0.21240234375, 0.1246337890625, 0.007904052734375, -0.2386474609375, -0.1795654296875, -0.378662109375, -0.487548828125], dtype='float16'),
+---
+>                 np.array([0.336181640625, -0.21240234375, 0.1246337890625, 0.007904052734375, -0.2386474609375, -0.1795654296875, -0.378662109375, -0.487548828125], dtype='float32'),
+384c376
+<                 np.load(os.path.join(DATA_DIR, 'const78_policy_model.temporal_hydra.final_layer.sim_pose.weight.npy')).astype('float16').reshape([12, 32]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const78_policy_model.temporal_hydra.final_layer.sim_pose.weight.npy')).astype('float32').reshape([12, 32]),
+388c380
+<                 np.load(os.path.join(DATA_DIR, 'const79_policy_model.temporal_hydra.final_layer.sim_pose.bias.npy')).astype('float16').reshape([12]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const79_policy_model.temporal_hydra.final_layer.sim_pose.bias.npy')).astype('float32').reshape([12]),
+392c384
+<                 np.load(os.path.join(DATA_DIR, 'const80_policy_model.action_block.action_block_in.0.weight.npy')).astype('float16').reshape([128, 515]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const80_policy_model.action_block.action_block_in.0.weight.npy')).astype('float32').reshape([128, 515]),
+396c388
+<                 np.load(os.path.join(DATA_DIR, 'const81_policy_model.action_block.action_block_in.0.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const81_policy_model.action_block.action_block_in.0.bias.npy')).astype('float32').reshape([128]),
+400c392
+<                 np.load(os.path.join(DATA_DIR, 'const82_policy_model.action_block.resblocks.0.block_a.0.weight.npy')).astype('float16').reshape([512, 128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const82_policy_model.action_block.resblocks.0.block_a.0.weight.npy')).astype('float32').reshape([512, 128]),
+404c396
+<                 np.load(os.path.join(DATA_DIR, 'const83_policy_model.action_block.resblocks.0.block_a.0.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const83_policy_model.action_block.resblocks.0.block_a.0.bias.npy')).astype('float32').reshape([512]),
+408c400
+<                 np.load(os.path.join(DATA_DIR, 'const84_policy_model.action_block.resblocks.0.block_a.3.weight.npy')).astype('float16').reshape([128, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const84_policy_model.action_block.resblocks.0.block_a.3.weight.npy')).astype('float32').reshape([128, 512]),
+412c404
+<                 np.load(os.path.join(DATA_DIR, 'const85_policy_model.action_block.resblocks.0.block_a.3.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const85_policy_model.action_block.resblocks.0.block_a.3.bias.npy')).astype('float32').reshape([128]),
+416c408
+<                 np.load(os.path.join(DATA_DIR, 'const86_policy_model.action_block.resblocks.0.block_b.1.weight.npy')).astype('float16').reshape([512, 128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const86_policy_model.action_block.resblocks.0.block_b.1.weight.npy')).astype('float32').reshape([512, 128]),
+420c412
+<                 np.load(os.path.join(DATA_DIR, 'const87_policy_model.action_block.resblocks.0.block_b.1.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const87_policy_model.action_block.resblocks.0.block_b.1.bias.npy')).astype('float32').reshape([512]),
+424c416
+<                 np.load(os.path.join(DATA_DIR, 'const88_policy_model.action_block.resblocks.0.block_b.4.weight.npy')).astype('float16').reshape([128, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const88_policy_model.action_block.resblocks.0.block_b.4.weight.npy')).astype('float32').reshape([128, 512]),
+428c420
+<                 np.load(os.path.join(DATA_DIR, 'const89_policy_model.action_block.resblocks.0.block_b.4.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const89_policy_model.action_block.resblocks.0.block_b.4.bias.npy')).astype('float32').reshape([128]),
+432c424
+<                 np.load(os.path.join(DATA_DIR, 'const90_policy_model.action_block.resblocks.1.block_a.0.weight.npy')).astype('float16').reshape([512, 128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const90_policy_model.action_block.resblocks.1.block_a.0.weight.npy')).astype('float32').reshape([512, 128]),
+436c428
+<                 np.load(os.path.join(DATA_DIR, 'const91_policy_model.action_block.resblocks.1.block_a.0.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const91_policy_model.action_block.resblocks.1.block_a.0.bias.npy')).astype('float32').reshape([512]),
+440c432
+<                 np.load(os.path.join(DATA_DIR, 'const92_policy_model.action_block.resblocks.1.block_a.3.weight.npy')).astype('float16').reshape([128, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const92_policy_model.action_block.resblocks.1.block_a.3.weight.npy')).astype('float32').reshape([128, 512]),
+444c436
+<                 np.load(os.path.join(DATA_DIR, 'const93_policy_model.action_block.resblocks.1.block_a.3.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const93_policy_model.action_block.resblocks.1.block_a.3.bias.npy')).astype('float32').reshape([128]),
+448c440
+<                 np.load(os.path.join(DATA_DIR, 'const94_policy_model.action_block.resblocks.1.block_b.1.weight.npy')).astype('float16').reshape([512, 128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const94_policy_model.action_block.resblocks.1.block_b.1.weight.npy')).astype('float32').reshape([512, 128]),
+452c444
+<                 np.load(os.path.join(DATA_DIR, 'const95_policy_model.action_block.resblocks.1.block_b.1.bias.npy')).astype('float16').reshape([512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const95_policy_model.action_block.resblocks.1.block_b.1.bias.npy')).astype('float32').reshape([512]),
+456c448
+<                 np.load(os.path.join(DATA_DIR, 'const96_policy_model.action_block.resblocks.1.block_b.4.weight.npy')).astype('float16').reshape([128, 512]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const96_policy_model.action_block.resblocks.1.block_b.4.weight.npy')).astype('float32').reshape([128, 512]),
+460c452
+<                 np.load(os.path.join(DATA_DIR, 'const97_policy_model.action_block.resblocks.1.block_b.4.bias.npy')).astype('float16').reshape([128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const97_policy_model.action_block.resblocks.1.block_b.4.bias.npy')).astype('float32').reshape([128]),
+464c456
+<                 np.load(os.path.join(DATA_DIR, 'const98_policy_model.action_block.action_block_out.weight.npy')).astype('float16').reshape([2, 128]),
+---
+>                 np.load(os.path.join(DATA_DIR, 'const98_policy_model.action_block.action_block_out.weight.npy')).astype('float32').reshape([2, 128]),
+467,473c459,465
+<             numpy_helper.from_array(np.array([0.044281005859375, -0.5244140625], dtype='float16'), name='policy_model.action_block.action_block_out.bias'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const99_onnx__Add_335.npy')).astype('float16').reshape([10, 512]), name='onnx::Add_335'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const100_onnx__MatMul_336.npy')).astype('float16').reshape([512, 512]), name='onnx::MatMul_336'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const101_onnx__MatMul_337.npy')).astype('float16').reshape([512, 1536]), name='onnx::MatMul_337'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const102_onnx__MatMul_352.npy')).astype('float16').reshape([512, 512]), name='onnx::MatMul_352'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const103_onnx__MatMul_353.npy')).astype('float16').reshape([512, 2048]), name='onnx::MatMul_353'),
+<             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const104_onnx__MatMul_354.npy')).astype('float16').reshape([2048, 512]), name='onnx::MatMul_354'),
+---
+>             numpy_helper.from_array(np.array([0.044281005859375, -0.5244140625], dtype='float32'), name='policy_model.action_block.action_block_out.bias'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const99_onnx__Add_335.npy')).astype('float32').reshape([10, 512]), name='onnx::Add_335'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const100_onnx__MatMul_336.npy')).astype('float32').reshape([512, 512]), name='onnx::MatMul_336'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const101_onnx__MatMul_337.npy')).astype('float32').reshape([512, 1536]), name='onnx::MatMul_337'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const102_onnx__MatMul_352.npy')).astype('float32').reshape([512, 512]), name='onnx::MatMul_352'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const103_onnx__MatMul_353.npy')).astype('float32').reshape([512, 2048]), name='onnx::MatMul_353'),
+>             numpy_helper.from_array(np.load(os.path.join(DATA_DIR, 'const104_onnx__MatMul_354.npy')).astype('float32').reshape([2048, 512]), name='onnx::MatMul_354'),
+537c529
+<                 value=numpy_helper.from_array(np.array(2.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(2.0, dtype='float32'), name=''),
+558c550
+<                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float32'), name=''),
+692c684
+<                 value=numpy_helper.from_array(np.array(0.353515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.353515625, dtype='float32'), name=''),
+705c697
+<                 value=numpy_helper.from_array(np.array(0.353515625, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(0.353515625, dtype='float32'), name=''),
+790c782
+<                 value=numpy_helper.from_array(np.array(2.0, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(2.0, dtype='float32'), name=''),
+811c803
+<                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array(1.0013580322265625e-05, dtype='float32'), name=''),
+1295,1296c1287,1291
+<             make_node('Constant', inputs=[], outputs=['/Constant_1_output_0'], name='/Constant_1', value=numpy_helper.from_array(np.array(24, dtype='int64'), name='')),
+<             make_node('Gather', inputs=['prev_desired_curv', '/Constant_1_output_0'], outputs=['/Gather_1_output_0'], name='/Gather_1', axis=1),
+---
+>             make_node('Constant', inputs=[], outputs=['/Constant_1_output_0'], name='/Constant_1', value=numpy_helper.from_array(np.array([24], dtype='int64'), name='')),
+>             make_node('Gather', inputs=['prev_desired_curv', '/Constant_1_output_0'], outputs=['/last_prev_desired_curv'], name='/Gather_1', axis=1),
+>             # Fix dimenson error
+>             make_node('Constant', inputs=[], outputs=['/Constant_Reshape_pdc'], name='/Constant_pdc', value=numpy_helper.from_array(np.array([1, -1], dtype='int64'), name='')),
+>             make_node('Reshape', inputs=['/last_prev_desired_curv', '/Constant_Reshape_pdc'], outputs=['/Gather_1_output_0'], name='/Reshape_pdc', allowzero=0),
+1451c1446
+<                 value=numpy_helper.from_array(np.array([[0.01000213623046875, 1.0]], dtype='float16'), name=''),
+---
+>                 value=numpy_helper.from_array(np.array([[0.01000213623046875, 1.0]], dtype='float32'), name=''),

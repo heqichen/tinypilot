@@ -1,3 +1,7 @@
 vision_smoke_test
+video_to_nn_test
 *.o
 *.cl
+models
+assets
+output*

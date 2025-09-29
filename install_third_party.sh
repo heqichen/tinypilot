@@ -54,6 +54,18 @@ FILE_NAME="googletest-1.17.0.tar.gz"
 DEST_DIR="$SCRIPT_DIR/third_party/googletest"
 INSTALL_DIR="$DEST_DIR/install"
 download_and_extract "$ARTIFACT_URL" "$DEST_DIR" "$FILE_NAME"
-
 build_googletest "$DEST_DIR/output/googletest-1.17.0" "$INSTALL_DIR"
+
+#PYTHON
+
+ARTIFACT_URL="https://github.com/PINTO0309/onnx2tf/archive/refs/tags/1.28.2.tar.gz"
+FILE_NAME="onnx2tf-1.28.2.tar.gz"
+DEST_DIR="$SCRIPT_DIR/third_party/onnx2tf"
+download_and_extract "$ARTIFACT_URL" "$DEST_DIR" "$FILE_NAME"
+
+ARTIFACT_URL="https://github.com/microsoft/onnxconverter-common/archive/refs/tags/v0.16.0.tar.gz"
+FILE_NAME="onnxconverter-common-v0.16.0.tar.gz"
+DEST_DIR="$SCRIPT_DIR/third_party/onnxconverter-common"
+download_and_extract "$ARTIFACT_URL" "$DEST_DIR" "$FILE_NAME"
+
 

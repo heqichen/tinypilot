@@ -1,0 +1,56 @@
+#include "sensor/vision/input/video_input.h"
+#include <opencv2/opencv.hpp>
+#include <string>
+
+namespace cooboc {
+namespace sensor {
+namespace vision {
+namespace input {
+
+
+VideoInput::VideoInput(const char *videoPath) :
+    callback_ {[](const std::uint8_t *, std::size_t, std::size_t) {
+    }},
+    isEnd_ {false},
+    cap_ {std::string {videoPath}} {
+    if (!cap_.isOpened()) {
+        std::cerr << "Error: Cannot open video file: " << videoPath << std::endl;
+        throw -1;
+    } else {
+        printf("Load video [%s]\r\n", videoPath);
+    }
+}
+
+VideoInput::~VideoInput() {
+    cap_.release();
+}
+
+void VideoInput::registerCallback(const VideoInput::OnVideoFrameCallback callback) {
+    callback_ = callback;
+}
+
+bool VideoInput::end() {
+    return isEnd_;
+}
+
+void VideoInput::tick() {
+    cv::Mat frame;
+
+    cap_ >> frame;    // Read next frame
+    if (frame.empty()) {
+        isEnd_ = true;
+        return;    // End of video
+    }
+
+    std::size_t width = frame.cols;
+    std::size_t height = frame.rows;
+
+    cv::Mat nv12;
+    cv::cvtColor(frame, nv12, cv::COLOR_BGR2YUV_I420);
+
+    callback_(nv12.data, width, height);
+}
+}    // namespace input
+}    // namespace vision
+}    // namespace sensor
+}    // namespace cooboc

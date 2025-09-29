@@ -1,0 +1,5 @@
+#ifndef __SYSTEM_TEST_MODULE_VIDEO_TO_NN_TEST_H__
+#define __SYSTEM_TEST_MODULE_VIDEO_TO_NN_TEST_H__
+
+
+#endif
