@@ -41,6 +41,24 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
+    },
+    {
+      "name": "C++ PolicyRunner",
+      "type": "cppdbg",
+      "request": "launch",
+      // "program": "${workspaceFolder}/system/test/module/vision_smoke_test",
+      "program": "${workspaceFolder}/ml/test/policy_runner_test",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/ml/test/",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "/home/heqichen/workspace/tinypilot/third_party/ArmNN/output"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
     }
   ]
 }

@@ -12,47 +12,16 @@ namespace cooboc {
 namespace ml {
 
 PolicyRunner::PolicyRunner(const char *tfliteFilepath) {
-    // Load model
+  printf("load model: [%s]\r\n", tfliteFilepath);
     armnnTfLiteParser::ITfLiteParserPtr parser = armnnTfLiteParser::ITfLiteParser::Create();
     armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile(tfliteFilepath);
 
-
-    std::vector<std::string> inputNames = parser->GetSubgraphInputTensorNames(0);
-    std::vector<std::string> outputNames = parser->GetSubgraphOutputTensorNames(0);
-
-    std::size_t subgraphCount = parser->GetSubgraphCount();
-    std::printf("Subgraph count: %zu\n", subgraphCount);
-    std::printf("Input names:\r\n");
-
-    for (const auto &name : inputNames) {
-        std::printf("%s: ", name.c_str());
-        armnn::BindingPointInfo inputBinding = parser->GetNetworkInputBindingInfo(0, name);
-        printf("id=%d, ", inputBinding.first);
-        armnn::TensorShape shape = inputBinding.second.GetShape();
-        unsigned int dimNum = shape.GetNumDimensions();
-        for (unsigned int i = 0; i < dimNum; ++i) {
-            std::printf("%u ", shape[i]);
-        }
-        printf("\r\n");
-    }
-
-    std::printf("\nOutput names:\r\n");
-    for (const auto &name : outputNames) {
-        std::printf("%s: ", name.c_str());
-        armnn::BindingPointInfo outputBinding = parser->GetNetworkOutputBindingInfo(0, name);
-        printf("id=%d, ", outputBinding.first);
-        armnn::TensorShape shape = outputBinding.second.GetShape();
-        unsigned int dimNum = shape.GetNumDimensions();
-        for (unsigned int i = 0; i < dimNum; ++i) {
-            std::printf("%u ", shape[i]);
-        }
-        printf("\r\n");
-    }
-
+    const std::vector<armnn::BackendId>& backendPreferences {armnn::Compute::CpuRef};
 
     // Optimise ArmNN network
     armnn::IOptimizedNetworkPtr optNet =
-      Optimize(*network, {armnn::Compute::CpuRef}, ModelRuntime::getRuntime()->GetDeviceSpec());
+      Optimize(*network, backendPreferences, ModelRuntime::getRuntime()->GetDeviceSpec());
+
     std::printf(
       "WARNING: Use CPU now, please change to GPU in production. %s:%d [%s()]\r\n", __FILE__, __LINE__, __FUNCTION__);
     if (!optNet) {
@@ -62,6 +31,7 @@ PolicyRunner::PolicyRunner(const char *tfliteFilepath) {
         std::cerr << "Error: Failed to optimise the input network." << std::endl;
         throw 1;
     }
+    std::printf("op netwrok \r\n");
 
     // Load graph into runtime
     ModelRuntime::getRuntime()->LoadNetwork(networkIdentifier_, std::move(optNet));

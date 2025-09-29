@@ -1,5 +1,6 @@
 #include "ml/model_runtime.h"
 #include <armnn/IRuntime.hpp>
+#include <cstdio>
 
 namespace cooboc {
 namespace ml {
@@ -7,6 +8,7 @@ namespace ml {
 ModelRuntime::ModelRuntime() {
     armnn::IRuntime::CreationOptions options;    // default options
     runtimePtr_ = armnn::IRuntime::Create(options);
+    std::printf("create runtime\r\n");
 }
 
 armnn::IRuntimePtr& ModelRuntime::getRuntime() {

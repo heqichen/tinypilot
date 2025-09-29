@@ -73,5 +73,5 @@
         "__debug": "cpp",
         "regex": "cpp"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
 }

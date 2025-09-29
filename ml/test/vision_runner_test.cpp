@@ -13,6 +13,7 @@ namespace ml {
 namespace {
 TEST(ModelRunnerTest, smoke_test) {
     // Setup
+    armnn::ConfigureLogging(true, true, armnn::LogSeverity::Trace);
 
     VisionRunner visionRunner(VISION_TFLITE_FILE_PATH);
 

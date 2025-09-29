@@ -7,7 +7,8 @@ TARGET = vision_runner_test policy_runner_test
 
 VISION_TFLITE_FILE_PATH := $(WORKSPACE_ROOT)/mlutils/modelgen/models_tflite/test_model_pb/driving_vision_fp32_float32.tflite
 # POLICY_TFLITE_FILE_PATH := $(WORKSPACE_ROOT)/mlutils/modelgen/models_tflite/test_model_pb/driving_policy_fp32_float32.tflite
-POLICY_TFLITE_FILE_PATH := /home/heqichen/workspace/tinypilot/POC/fix-gather/saved_model/output_float32.tflite
+# POLICY_TFLITE_FILE_PATH := /home/heqichen/workspace/tinypilot/POC/fix-gather/saved_model/output_float32.tflite
+POLICY_TFLITE_FILE_PATH := /home/heqichen/workspace/tinypilot/mlutils/modelgen/models_py/saved_model/2_float32.tflite
 DEFFLAGS += -DVISION_TFLITE_FILE_PATH=\"$(VISION_TFLITE_FILE_PATH)\" -DPOLICY_TFLITE_FILE_PATH=\"$(POLICY_TFLITE_FILE_PATH)\"
 
 all: $(TARGET)

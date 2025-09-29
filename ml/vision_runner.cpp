@@ -12,12 +12,15 @@ namespace ml {
 
 VisionRunner::VisionRunner(const char *tfliteFilepath) {
     // Load model
+    printf("load model: [%s]\r\n", tfliteFilepath);
     armnnTfLiteParser::ITfLiteParserPtr parser = armnnTfLiteParser::ITfLiteParser::Create();
     armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile(tfliteFilepath);
 
+    const std::vector<armnn::BackendId>& backendPreferences {armnn::Compute::CpuRef};
+
     // Optimise ArmNN network
     armnn::IOptimizedNetworkPtr optNet =
-      Optimize(*network, {armnn::Compute::CpuRef}, ModelRuntime::getRuntime()->GetDeviceSpec());
+      Optimize(*network, backendPreferences, ModelRuntime::getRuntime()->GetDeviceSpec());
     std::printf(
       "WARNING: Use CPU now, please change to GPU in production. %s:%d [%s()]\r\n", __FILE__, __LINE__, __FUNCTION__);
     if (!optNet) {
