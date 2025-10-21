@@ -31,4 +31,15 @@ def test_mali():
     exe(a, b, c)
     print(c)
     
+    exe.export_library("output.so")
+    
+    loaded_lib = tvm.runtime.load_module("output.so")
+    ia = tvm.nd.array(np.array([567], dtype="float32"), dev)
+    ib = tvm.nd.array(np.array([246], dtype="float32"), dev)
+    ic = tvm.nd.empty((1,), dtype="float32", device=dev)
+    
+    loaded_lib(ia, ib, ic)
+    print(ic)
+    
+    
 test_mali()
